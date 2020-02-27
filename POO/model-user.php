@@ -13,7 +13,6 @@ class User
 
      public function __construct()
     {
-        $db = BddConnect::getInstance();
         $this->connect = $db->getDbh();
     }
 
@@ -55,7 +54,7 @@ class User
 
     public function getPass()
     {
-        return $this->mot_de_pass;
+        return $this->mot_de_passe;
     }
 
     public function getMail()
@@ -76,9 +75,9 @@ class User
         $this->pseudo = $pseudo;
     }
 
-    public function setPass($pass)
+    public function setPass($mot_de_passe)
     {
-        $this->mot_de_pass = $mot_de_pass;
+        $this->mot_de_pass = $mot_de_passe;
     }
 
     public function setMail($email)

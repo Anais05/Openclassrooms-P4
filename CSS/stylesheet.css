@@ -270,7 +270,7 @@ h3
 	text-decoration: none;
 }
 
-#supp-comm, #signaler
+.supp-comm, .signaler
 {
 	color: red;
 	border: none;

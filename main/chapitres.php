@@ -4,8 +4,6 @@ $title = "Affichage chapitres"; ?>
 session_start()
 ?>
 
-
-
 <link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="../CSS/stylesheet2.css">
 
@@ -92,84 +90,6 @@ session_start()
 		?>	
 
 
-		<script type="text/javascript">
-
-	    		var signaler = document.getElementsByClassName("signaler");
-
-	    		if (signaler != null ) {
-	    			for (var i = 0; i < signaler.length ; i+=2) 
-	    			{
-			    		signaler[i].addEventListener("click", function(e)
-			    		{
-			    			console.log(e.target.id);
-
-						    var commentaireId = e.target.id;
-						 
-						    $.ajax({
-						        type: "POST",
-						        url: "signaler.php",
-						        data: 
-						        {
-						        	commentaire:commentaireId
-						        },
-						        success : function(code_html, statut)
-						        {
-						        	$("#mssg2").html("<p>Le commentaire a bien été signalé !</p>");
-						        },
-						        error : function(resultat, statut, erreur)
-						        {
-						        	$("#mssg2").html("<p>Erreur le commentaire n'a pas été signalé !</p>");
-						        }
-				    		});
-				    	})
-			        }
-			    }
-			    
-
-	    	</script>
-
-
-	    	<script type="text/javascript">
-
-	    		var supprimer = document.getElementById("supp-comm");
-
-	    		if (supprimer != null && supprimer.length < 1) {
-
-		    		supprimer.addEventListener("click", function(e)
-		    		{
-
-					    //commentaire.style.color = "red";
-					    var element2 = document.getElementById(event.target.id); 
-					    var commentaireId2 = element2.getAttribute("supp");
-					 
-					    $.ajax({
-					        type: "POST",
-					        url: "supprimer.php",
-					        data: 
-					        {
-					        	commentaire:commentaireId2
-					        },
-					        success : function(code_html, statut)
-					        {
-					        	$("#mssg2").html("<p>Le commentaire a bien été supprimé !</p>");
-					        },
-					        error : function(resultat, statut, erreur)
-					        {
-					        	$("#mssg2").html("<p>Erreur le commentaire n'a pas été supprimé !</p>");
-					        }
-			    		});
-			    	})
-			    }
-			    
-
-	    	</script>
-
-
-
-
-
-
-
 
 	    <div id="mssg2"></div>
 
@@ -182,55 +102,12 @@ session_start()
 				<textarea name="content" rows="5" cols="180" id="comment"></textarea>
 				<input type="submit" id ="submit" value="Poster" />
 			</form>
+	    </div> 
 
-
-			<script type="text/javascript">
-	    		var submit = document.getElementById("submit");
-
-	    		submit.addEventListener("click", function(e)
-	    		{
-	    			e.preventDefault();
-	    			var url_string = window.location.href;
-					var url = new URL(url_string);
-					var chptr = url.searchParams.get("chap");
-					console.log(chptr);
-
-				    var membre = document.getElementById("membre-id").value;
-				    var comm = document.getElementById("comment").value;
-				    console.log(membre);
-				    console.log(comm);
-				 
-				    $.ajax({
-				        type: "POST",
-				        url: "comment.php",
-				        data: 
-				        {
-				        	chap:chptr, 
-				        	membre:membre, 
-				        	commentaire:comm
-				        },
-
-				        success : function(code_html, statut)
-				        {
-				        	$("#mssg3").html("<p>Votre commentaire a bien été posté !</p>");
-				        	$('.leComm:last').after(code_html);
-				        },
-				        error : function(resultat, statut, erreur)
-				        {
-				        	$("#mssg3").html("<p>Erreur le commentaire n'a pas été posté !</p>");
-				        }
-		    		});
-		    	})
-
-	    	</script>
-
-			
-	    </div>    
-		
 	</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
 
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
+<script>deleteComm();reportComm();postComm();</script>  

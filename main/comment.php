@@ -27,7 +27,8 @@
 		    'commentaire' => $_POST['commentaire'],
 
 		));
-		//reccuperation du commentaire
+
+		//reccuperation et affichage du commentaire
 
 		$req2 = $bdd->prepare("
 						SELECT commentaires.commentaire, membres.pseudo , commentaires.date_ajout, commentaires.id_comm

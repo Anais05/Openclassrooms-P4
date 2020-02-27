@@ -1,7 +1,6 @@
 <?php
 class BddConnection
 {
-    private static $instance;
     private $type = "mysql";
     private $host = "localhost";
     private $dbname = "projet4";
@@ -12,13 +11,12 @@ class BddConnection
     private function __construct()
     {
         try{
-            $this->dbh = new PDO(
+            $this->db = new PDO(
                 $this->type.':host='.$this->host.';dbname='.$this->dbname, 
                 $this->username, 
                 $this->password,
             );
-            $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);            
-            $this->dbh->exec("set names 'utf8';");
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);            
           
         }
         catch(PDOException $e){

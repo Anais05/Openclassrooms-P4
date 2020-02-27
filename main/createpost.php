@@ -1,9 +1,7 @@
 <?php 
 $title = "Nouveau chapitre"; ?>
-<link rel="stylesheet" type="text/css" href="../CSS/stylesheet2.css">
-
-
 <?php ob_start(); ?>
+<link rel="stylesheet" type="text/css" href="../CSS/stylesheet2.css">
 
 <section id="creation">
 	<div class="formulaire">
@@ -17,48 +15,13 @@ $title = "Nouveau chapitre"; ?>
 		</form>
     </div>
 </section>
-
 <div id="lala"></div>
 
+<?php $content = ob_get_clean(); ?>
 
-<script type="text/javascript">
-	    		var submit = document.getElementById("create");
+<?php require('template.php'); ?>
+<script>createChap();</script>
 
-	    		submit.addEventListener("click", function(e)
-	    		{
-	    			e.preventDefault();
-
-				    var title = document.getElementById("title").value;
-				    var content = document.getElementById("content").value;
-				    console.log(title);
-				    console.log(content);
-				 
-				    $.ajax({
-				        type: "POST",
-				        url: "create.php",
-				        data: 
-				        {
-				        	titre:title, 
-				        	texte:content
-				        },
-
-				        success : function(code_html, statut)
-				        {
-				        	$("#lala").html("<p>le chapitre a été publié voir <a href='admin-view.php'>ici !</a></p>");
-				        	var form = document.getElementById("new_chap");
-				        	form.style.display = "none";
-				        },
-				        error : function(resultat, statut, erreur)
-				        {
-				        	$("#lala").html("<p>Erreur le chapitre n'a pas été posté !</p>");
-				        }
-		    		});
-		    	})
-
-	    	</script>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
 
 
 

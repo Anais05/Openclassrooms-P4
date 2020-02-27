@@ -16,9 +16,6 @@
 				
 				'id' => $_POST['chap']
 			));
-			
 		}
-
-		echo "<p class ='retour'> Vous avez supprimer ce chapitre !<p>";
 
 ?>

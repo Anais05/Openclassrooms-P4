@@ -93,14 +93,14 @@ class Comment
         return $this;
     }
 
-    public function setId_post($id)
+    public function setId_post($id_post)
     {
         $this->id_article = $id_post;
 
         return $this;
     }
 
-    public function setId_membre($id)
+    public function setId_membre($id_membre)
     {
         $this->pseudo = $id_membre;
 

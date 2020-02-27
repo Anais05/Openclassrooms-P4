@@ -12,8 +12,7 @@ class Chapitre
     }
     public function __construct()
     {
-        $db = BddConnect::getInstance();
-        $this->connect = $db->getDbh();
+        $this->connect = $db->getDb();
     }
 
     public function hydrate($donnees)
@@ -73,7 +72,7 @@ class Chapitre
 
     public function setDate($date_post)
     {
-        $this->date_post = nom();
+        $this->date_post = now();
 
         return $this;
     }

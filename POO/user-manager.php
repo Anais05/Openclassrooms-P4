@@ -1,25 +1,20 @@
 <?php
 class UserManager 
 {
-    private $_db; // Instance de PDO.
 
-    public function __construct($db)
+    public function __construct()
     {
         $this->setDb($db);
     }
 
-    public function add(User $user)
+    public function add()
     {
         $query = $this->db->prepare('INSERT INTO membres(pseudo, mot_de_pass, email) VALUES(:pseudo, :mot_de_pass, :email)');
         $query->execute([
-            'pseudo' => $user->getPseudo(),
-            'mot_de_pass' => $user->getPass(),
-            'email' => $user->getMail()
+            'pseudo' =>getPseudo(),
+            'mot_de_pass' => getPass(),
+            'email' =>getMail()
         ]);
     }
-
-    public function setDb(PDO $db)
-    {
-        $this->_db = $db;
-    }
+   
 }

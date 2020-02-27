@@ -2,7 +2,6 @@
 class chapitreManager
 {
     
-    private $_db; 
 
     public function __construct($db)
     {
@@ -12,25 +11,17 @@ class chapitreManager
 
     public function get($id)
     {
-        $query = $this->db->prepare('SELECT id, title, content, DATE_FORMAT(date_creation, "%d/%m/%Y") AS date_creation, on_line FROM articles WHERE id = ?');
-        $query->execute([
-            $id
-        ]);
-        $article = $query->fetch(PDO::FETCH_ASSOC);
-
-        return new Article($article);
-    }
-
-    public function exists($id)
-    {
         if (is_numeric($id))
         {
-            $query = $this->db->prepare('SELECT id FROM articles WHERE id = ?');
+            $query = $this->db->prepare('SELECT * FROM chapitres WHERE id=?');
             $query->execute([
                 $id
             ]);
 
-            return $query->fetch(PDO::FETCH_ASSOC);
+            $resultat = $req->fetch();
+            echo "<p class ='titre-chap'>" . htmlspecialchars((getTitre()) . "</p>" ;
+            echo "<p class = 'date'> Publié le : ".htmlspecialchars(getDate()) . "</p>";
+            echo "<p class ='chap'>". htmlspecialchars(getTexte()) . "</p>"; 
         }
         else
         {
@@ -42,7 +33,7 @@ class chapitreManager
 	{
 		// retourne la liste de tous les chapitres
 
-		$query = $this->db->query("SELECT id, titre ,date_post ,SUBSTRING(texte,1,500) AS debut_chap FROM chapitres ORDER BY date_post DESC LIMIT 0, 15 ");
+		$query = $this->db->query("SELECT id, titre ,date_post ,SUBSTRING(texte,1,500) AS debut_chap FROM chapitres ORDER BY date_post");
 
 		while ($donnees = $query->fetch()
 		{
@@ -55,9 +46,9 @@ class chapitreManager
 	}
 
 
-    public function add(chapitre $chapitre)
+    public function add()
     {
-        $query = $this->db->prepare("INSERT INTO chapitres( date_post, titre, texte) VALUES( now(), :titre, :texte)'");
+        $query = $this->db->prepare("INSERT INTO chapitres( date_post, titre, texte) VALUES( now(), :titre, :texte)");
         $query->execute([
             $chapitre->getDate(),
             $chapitre->getTitret(),
@@ -65,7 +56,7 @@ class chapitreManager
         ]);
     }
 
-    public function update(Article $chapitre)
+    public function update()
     {
         $query = $this->db->prepare("UPDATE chapitres SET titre = :titre, texte = :texte, date_post = now() WHERE id = :id");
         $query->execute([
@@ -75,7 +66,7 @@ class chapitreManager
         ]);
     }
 
-    public function delete(Article $chapitre)
+    public function delete()
     {
         $query = $this->db->prepare("DELETE FROM chapitre WHERE id = id");
         $result = $query->execute([

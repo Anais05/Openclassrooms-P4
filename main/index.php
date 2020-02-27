@@ -18,7 +18,7 @@ session_start()
         }
 
         //  Récupération du chapitre
-        $reponse = $bdd->query('SELECT id, titre ,date_post ,SUBSTRING(texte,1,500) AS debut_chap FROM chapitres ORDER BY date_post DESC LIMIT 0, 15 ');
+        $reponse = $bdd->query('SELECT id, titre ,date_post ,SUBSTRING(texte,1,500) AS debut_chap FROM chapitres ORDER BY date_post');
 
         while ($donnees = $reponse->fetch())
             {
