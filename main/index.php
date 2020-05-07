@@ -1,36 +1,29 @@
 <?php $title = 'Billet simple pour l\'Alaska'; 
 session_start()
 ?>
+<?php
+   require('../model/ChapitreManager.php');
+?>
 
 <?php ob_start(); ?>
-<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
 
+<?php 
 
-    <?php
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-            $bdd->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
-        }
-        catch (PDOException $e)
-        {
-                die('Erreur : ' . $e->getMessage());
-        }
-
-        //  Récupération du chapitre
-        $reponse = $bdd->query('SELECT id, titre ,date_post ,SUBSTRING(texte,1,500) AS debut_chap FROM chapitres ORDER BY date_post');
-
-        while ($donnees = $reponse->fetch())
-            {
-                echo "<p class ='titre-chap'>" . htmlspecialchars($donnees['titre']) . "</p>" ;
-                echo "<p class = 'date'> Publié le : ".htmlspecialchars($donnees['date_post']) . "</p>";
-                echo "<p class ='chap'>". htmlspecialchars($donnees['debut_chap']) . "</p>";
-                echo "<a class = 'suite-chap' href='chapitres.php?chap=".$donnees['id'] ." '>Lire la suite ...</a> </br>";
-            }
-
-
-        $reponse->closeCursor();
-    ?>
+    $ChapitreManager = new chapitreManager();
+    $chapitres = $ChapitreManager->getList();
+    foreach ($chapitres as $chapitre)
+    { 
+?>
+    <p class ='titre-chap'><?=$chapitre ->getTitle()?></p>
+    <p class = 'date'> Publié le : <?=$chapitre ->getDate()?></p>
+    <p class ='chap'><?=substr($chapitre ->getTexte(), 0, 500)?></p>
+    <a class = 'suite-chap' href="chapitres.php?chap=<?=$chapitre ->getId()?>">Lire la suite ...</a> </br>
+<?php 
+    }
+?> 
+        
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
+

@@ -1,7 +1,9 @@
 <?php 
-$title = "Nouveau chapitre"; ?>
+$title = "Nouveau chapitre"; 
+require('../POO/ChapitreManager.php');
+?>
 <?php ob_start(); ?>
-<link rel="stylesheet" type="text/css" href="../CSS/stylesheet2.css">
+<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
 
 <section id="creation">
 	<div class="formulaire">
@@ -16,6 +18,12 @@ $title = "Nouveau chapitre"; ?>
     </div>
 </section>
 <div id="lala"></div>
+
+<?php 
+	$ChapitreManager = new chapitreManager();
+	$newPost = $ChapitreManager->addPost($titre,$texte);
+	
+?>
 
 <?php $content = ob_get_clean(); ?>
 

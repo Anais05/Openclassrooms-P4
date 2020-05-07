@@ -2,7 +2,7 @@
 $title = "Modification chapitre"; 
 ?>
 
-        <link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
         <link rel="shortcut icon" type="image/x-icon" href="">
         <link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel = "stylesheet" type = "text/css" / >
 	    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">

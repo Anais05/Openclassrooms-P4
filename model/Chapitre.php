@@ -10,10 +10,6 @@ class Chapitre
     {
         $this->hydrate($donnees);
     }
-    public function __construct()
-    {
-        $this->connect = $db->getDb();
-    }
 
     public function hydrate($donnees)
     {
@@ -23,17 +19,18 @@ class Chapitre
         }
 
         if (isset($donnees['date_post']))
-            $this->setTitle($donnees['date_post']);
+        {
+            $this->setDate($donnees['date_post']);
         }
 
-        if (isset($data['titre']))
+        if (isset($donnees['titre']))
         {
-            $this->setContent($donnees['titre']);
+            $this->setTitle($donnees['titre']);
         }
 
         if (isset($donnees['texte']))
         {
-            $this->setDate_creation($donnees['texte']);
+            $this->setTexte($donnees['texte']);
         }
 
     }
@@ -50,7 +47,7 @@ class Chapitre
         return $this->date_post;
     }
 
-    public function getTitre()
+    public function getTitle()
     {
         return $this->titre;
     }
@@ -72,12 +69,12 @@ class Chapitre
 
     public function setDate($date_post)
     {
-        $this->date_post = now();
+        $this->date_post = $date_post;
 
         return $this;
     }
 
-    public function setTitre($titre)
+    public function setTitle($titre)
     {
         $this->titre = htmlspecialchars($titre);
 
@@ -86,7 +83,7 @@ class Chapitre
 
     public function setTexte($texte)
     {
-        $this->texte = htmlspecialchars($texte();
+        $this->texte = htmlspecialchars($texte);
 
         return $this;
     }

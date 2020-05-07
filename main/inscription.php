@@ -1,6 +1,6 @@
 <?php $title = "Inscription"; ?>
 
- <link rel="stylesheet" type="text/css" href="../CSS/stylesheet2.css">
+ <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
 
 <section id="subscribe">
 

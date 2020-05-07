@@ -1,6 +1,5 @@
 <?php
 
-	session_start();
 
 	if(empty($_SESSION)){
 
@@ -19,7 +18,7 @@
 			}
 
 		//Insertion dans la bdd
-		
+		/*
 	    $req = $bdd->prepare('INSERT INTO commentaires( id_membre, id_post, commentaire, date_ajout , statut) VALUES(:id_membre, :id_post, :commentaire, now(), false)');
 		$req->execute(array(
 		    'id_membre' => $_POST['membre'],
@@ -35,9 +34,9 @@
 				    	FROM commentaires 
 				    	INNER JOIN membres ON commentaires.id_membre = membres.id 
 				    	WHERE id_post=? AND id_comm = LAST_INSERT_ID()");
-				    $req2->execute(array(
-				    	$_POST['chap'],
-				    ));
+		$req2->execute(array(
+			$_POST['chap'],
+		));
 
 				     if ($donnees = $req2 ->fetch())
 	              		{
@@ -53,11 +52,9 @@
 	                    }
 
 				    $req2->closeCursor();
-
+*/
 		
 	}
 	
 
 ?>
-
-

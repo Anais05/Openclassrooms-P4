@@ -3,93 +3,72 @@ $title = "Affichage chapitres"; ?>
 <?php ob_start(); 
 session_start()
 ?>
+<?php
+	require('../model/ChapitreManager.php');
+	require('../model/CommentManager.php');
+	
+?>
 
-<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
-<link rel="stylesheet" type="text/css" href="../CSS/stylesheet2.css">
+<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
+
+<div class ="LeChapitre">
+
+	<?php $ChapitreManager = new chapitreManager();
+		$id = $_GET['chap'];
+		$chapitre = $ChapitreManager->getChap($id);
+		{ 
+	?>
+		
+		<h2 class ='titre-chap'><?= $chapitre->getTitle() ?></h2>
+		<p class ='date'><?= $chapitre->getDate() ?></p>
+		<div class ='chap'><?= $chapitre->getTexte() ?></h2>
+	<?php 
+		}
+	?> 
+
+</div>
 
 
-	<div class ="LeChapitre">
-
-		<?php
-
-			try
-			    {
-			        $bdd = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-			    }
-			    catch (Exception $e)
-			    {
-			        die('Erreur : ' . $e->getMessage());
-			    }
-
-			    // verifie que l'id passé existe et est de type numeric
-				if(isset($_GET['chap']) AND is_numeric($_GET['chap'])) {
-				     
-				    // recupere les details du chapitre en fonction de l'id
-				    $req = $bdd->prepare('SELECT * FROM chapitres WHERE id=?');
-				    $req->execute(array($_GET['chap']));
-
-				   
-				    $resultat = $req->fetch();
-				    echo "<p class ='titre-chap'>" . htmlspecialchars($resultat['titre']) . "</p>" ;
-				    echo "<p class = 'date'> Publié le : ".htmlspecialchars($resultat['date_post']) . "</p>";
-			        echo "<p class ='chap'>". htmlspecialchars($resultat['texte']) . "</p>"; 
-				}
-
-		?>
-
-	</div>
+	
 
 
 	<div class="LesCommentaires">
 		<div id="petit-trait"></div>
 		<h3>Commentaires</h3>
 
-		<?php
+	<?php
+	$CommentManager = new CommentManager;
+	$comments = $CommentManager->getAll($id);
+		while ($comment = $comments->fetch()) {
+	?>
+			<div class = 'leComm' id =<?=$comment["id_comm"];?>>
+				<p class ='membre'><?= $comment["pseudo"];?></p>
+				<p class ='comm'><?= $comment["commentaire"];?></p>
+				<p class ='dateCommentaire'><?= $comment["date_ajout"];?></p>
+				</div>
+				<?php
+				if (isset($_SESSION['pseudo']) && ($_SESSION["pseudo"]=='admin'))
+					{
+						?>
+						<button class ='supp-comm' id="<?=$comment["id_comm"]?>">Supprimer le commentaire </button>;
+						<?php
+					}
+					 else if (isset($_SESSION["pseudo"]))
+					{
+						?>
+						<button class ='signaler' id="<?=$comment["id_comm"]?>">Signaler le commentaire</button>;
+					
+					<?php
+					}
+					echo "<div id ='mssg2'><div>";
+				}
 
-			try
-			    {
-			        $bdd = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-			    }
-			    catch (Exception $e)
-			    {
-			        die('Erreur : ' . $e->getMessage());
-			    }
-
-			    // verifie que l'id passé existe et est de type numeric
-				if(isset($_GET['chap']) AND is_numeric($_GET['chap'])) {
-					 // recupere les commentaires en fonction de l'id
-				    $reponse = $bdd->prepare("
-				    	SELECT commentaires.commentaire, membres.pseudo , commentaires.date_ajout, commentaires.id_comm
-				    	FROM commentaires 
-				    	INNER JOIN membres ON commentaires.id_membre = membres.id 
-				    	WHERE id_post=?");
-				    $reponse->execute(array($_GET['chap']));
-
-
-			        while ($donnees = $reponse->fetch())
-	                    {
-	                    	echo "<div class = 'leComm' id='".$donnees['id_comm']."'>";
-	                        echo "<p class ='membre'>" . htmlspecialchars($donnees['pseudo']) . "</p>" ;
-					        echo "<p class ='comm'>". htmlspecialchars($donnees['commentaire']) . "</p>";
-					        echo "<p class = 'dateCommentaire'> Publié le : ".htmlspecialchars($donnees['date_ajout']) . "</p>";
-					        echo "</div>";
-					        if (isset($_SESSION['pseudo']) && ($_SESSION["pseudo"]=='admin'))
-					        {
-					        	echo "<button class ='supp-comm' id=".$donnees['id_comm'].">Supprimer le commentaire </button>";
-					        }
-					        else if (isset($_SESSION["pseudo"]))
-					        {
-					        	echo "<button class ='signaler' id=".$donnees['id_comm'].">Signaler le commentaire</button>";
-					        }
-					        echo "<div id ='mssg2'><div>";
-					        
-	                    }
-
-				    $reponse->closeCursor();
-	            }
-		?>	
-
-
+		?>
+		
+			
+		
+	</div>
 
 	    <div id="mssg2"></div>
 
@@ -104,7 +83,35 @@ session_start()
 			</form>
 	    </div> 
 
-	</div>
+		<!-- <?php 
+		// 	$ChapitreManager = new commentManager();
+		// 	$id_membre = $_POST['membre'];
+		// 	$id_post = $_GET['chap'];
+		// 	$commentaire =  $_POST['commentaire'];
+
+
+		// 	if(empty($_SESSION)){
+		// 		echo "<p class ='seConnecter'> Vous n'êtes pas connecter, veuillez vous connecter <a href='connexion.php'>ici !</a><p>";
+
+		// 	} elseif (!empty($_SESSION["pseudo"])) {
+		// 		$commentaires = $commentManager->addAndDisplayComm($id_membre, $id_post,$commentaire);
+		// 		{
+		// ?>
+		// 			<div class ='leComm'>";
+		// 			<p class ='membre'><?= $comment->getPseudo()?></p>;
+		// 			<p class ='comm'><?= $comment->get_Commentaire()?></p>;
+		// 			<p class = 'dateCommentaire'><?= $comment->getDate_ajout()?></p>;
+		// 			</div> 
+		// 		<?php
+		// 		}
+				
+		
+		
+		// 	}
+			?>-->
+
+
+</div>
 
 
 <?php $content = ob_get_clean(); ?>

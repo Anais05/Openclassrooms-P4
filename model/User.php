@@ -1,7 +1,7 @@
 <?php
 class User
 {
-    private $id;
+    private $id_membre;
     private $pseudo;
     private $mot_de_passe;
     private $email;
@@ -11,16 +11,11 @@ class User
         $this->hydrate($donnees);
     }
 
-     public function __construct()
-    {
-        $this->connect = $db->getDbh();
-    }
-
     public function hydrate($donnees)
     {
-        if (isset($donnees['id']))
+        if (isset($donnees['id_membre']))
         {
-            $this->setId($donnees['id']);
+            $this->setId($donnees['id_membre']);
         }
 
         if (isset($donnees['pseudo']))
@@ -42,9 +37,9 @@ class User
 
     // GETTERS
 
-    public function getId()
+    public function getId_membre()
     {
-        return $this->id;
+        return $this->id_membre;
     }
 
     public function getPseudo()
@@ -65,9 +60,9 @@ class User
 
     // SETTERS
 
-    public function setId($id)
+    public function setId($id_membre)
     {
-        $this->id = $id;
+        $this->id = $id_membre;
     }
 
     public function setPseudo($pseudo)

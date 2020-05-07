@@ -13,48 +13,42 @@ class Comment
         $this->hydrate($data);
     }
 
-    public function __construct()
-    {
-        $db = BddConnect::getInstance();
-        $this->connect = $db->getDbh();
-    }
-
     public function hydrate($data)
     {
         if (isset($data['id_comm']))
         {
-            $this->setId($data['id_comm']);
+            $this-> setId_Comm($data['id_comm']);
         }
 
         if (isset($data['id_post']))
         {
-            $this->setId_article($data['id_post']);
+            $this->setId_post($data['id_post']);
         }
 
         if (isset($data['id_membre']))
         {
-            $this->setPseudo($data['id_membre']);
+            $this->setId_membre($data['id_membre']);
         }
 
         if (isset($data['commentaire']))
         {
-            $this->setComment($data['commentaire']);
+            $this->set_Commentaire($data['commentaire']);
         }
 
         if (isset($data['date_ajout']))
         {
-            $this->setDate_comment($data['date_ajout']);
+            $this->setDate_ajout($data['date_ajout']);
         }
 
         if (isset($data['statut']))
         {
-            $this->setReport($data['statut']);
+            $this->set_Statut($data['statut']);
         }
     }
 
     // GETTERS
 
-    public function getId()
+    public function getId_Comm()
     {
         return $this->id_comm;
     }
@@ -69,7 +63,7 @@ class Comment
         return $this->id_membre;
     }
 
-    public function getCommentaire()
+    public function get_Commentaire()
     {
         return $this->commentaire;
     }
@@ -79,14 +73,14 @@ class Comment
         return $this->date_ajout;
     }
 
-    public function getStatut()
+    public function get_Statut()
     {
         return $this->statut;
     }
 
     // SETTERS
 
-    public function setId($id)
+    public function setId_Comm($id_comm)
     {
         $this->id = $id_comm;
 
@@ -107,7 +101,7 @@ class Comment
         return $this;
     }
 
-    public function setCommentaire($comment)
+    public function set_Commentaire($commentaire)
     {
         $this->comment = htmlspecialchars($commentaire);
 
@@ -121,9 +115,9 @@ class Comment
         return $this;
     }
 
-    public function setStatut($statut)
+    public function set_Statut($statut)
     {
-        $this->report = $Statut;
+        $this->report = $statut;
 
         return $this;
     }
