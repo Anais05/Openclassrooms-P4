@@ -32,9 +32,9 @@
 
                                 <?php
                                     if (!empty($_SESSION))  {
-                                        echo '<li><a href="deconnexion.php">Déconnexion</a></li>';
+                                        echo '<li><a href="index.php?action=logout">Déconnexion</a></li>';
                                     } else {
-                                        echo '<li><a href="connexion.php">Connexion</a></li>';
+                                        echo '<li><a href="index.php?action=login">Connexion</a></li>';
                                     }
                                     if (!empty($_SESSION)) {
                                         echo "<li class = 'utilisateur'><i class='fas fa-user'></i>" . htmlspecialchars($_SESSION['pseudo']) . "</li>";
@@ -68,5 +68,6 @@
         </div>
     </body>
 </html>
+
 
 

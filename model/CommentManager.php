@@ -1,6 +1,6 @@
 <?php
 require_once('BddConnection.php');
-require_once('modelComment.php');
+require_once('Comment.php');
 class CommentManager extends BddConnection 
 {
 

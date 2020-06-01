@@ -1,29 +1,44 @@
 <?php
-session_start();
-
-spl_autoload_register(function ($class)
-{
-    include 'controller/' . $class . '.php' ;
-});
-
-
-// use \projet4\config\Autoloader;
-
-// use \projet4\app\Frontend;
-// require 'config/autoloader.php';
-// Autoloader::register();
 require('controller/Frontend.php');
 
-
-$frontend = new Frontend();
-
-
-    if (isset($_GET['action'])) 
+class router 
+{
+    public function run()
     {
-        if ($_GET['action'] == 'listChapitre')
+        try 
         {
-            $frontend->listChapitre();
+            $frontend = new Frontend();
+
+            if (isset($_GET['action'])) 
+            {
+                if ($_GET['action'] == 'home')
+                {
+                    $frontend->home();
+                }
+                elseif($_GET['action'] == 'login')
+                {
+                    $frontend->displayLogin();
+                }
+                elseif($_GET['action'] == 'loginSubmit')
+                {
+                    $frontend->loginSubmit(strip_tags($_POST['pseudo']), strip_tags($_POST['mot_de_passe']));
+                }
+                elseif ($_GET['action'] == 'logout') 
+                {
+                    $frontend->Logout();
+                }
+        
+            }
+            else {
+                $frontend->home();
+            }
+
+        }
+        catch (Exception $e)
+        {
+            echo 'Erreur';
         }
     }
+}
 
 ?>

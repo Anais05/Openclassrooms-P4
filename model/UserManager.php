@@ -1,19 +1,22 @@
 <?php
-namespace projet4\app;
 require_once('BddConnection.php');
-require_once('model-user.php');
+require_once('User.php');
 class UserManager extends BddConnection 
 {
 
-    public function add()
+    public function login($pseudo)
     {
         $bdd = $this->dbConnect();
-        $query = $bdd->prepare('INSERT INTO membres(pseudo, mot_de_pass, email) VALUES(:pseudo, :mot_de_pass, :email)');
-        $query->execute([
-            'pseudo' =>getPseudo(),
-            'mot_de_pass' => getPass(),
-            'email' =>getMail()
-        ]);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            //  Récupération du pseudo et mdp
+            $req = $bdd->prepare('SELECT id, mot_de_passe FROM membres WHERE pseudo = :pseudo');
+            $req->execute(array(
+                'pseudo' => $pseudo));
+            $user = $req->fetch();
+            return $user ;
+        }
+
     }
    
 }
