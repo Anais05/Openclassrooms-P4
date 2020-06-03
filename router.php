@@ -15,6 +15,14 @@ class router
                 {
                     $frontend->home();
                 }
+                elseif ($_GET['action'] == 'chapitre')
+                {
+                    $frontend->chapitre();
+                }
+                elseif ($_GET['action'] == 'addComm')
+                {
+                    $frontend->addComm();
+                }
                 elseif($_GET['action'] == 'login')
                 {
                     $frontend->displayLogin();
@@ -26,6 +34,14 @@ class router
                 elseif ($_GET['action'] == 'logout') 
                 {
                     $frontend->Logout();
+                }
+                elseif ($_GET['action'] == 'subscribe') 
+                {
+                    $frontend->displayinscription();
+                }
+                elseif ($_GET['action'] == 'subscribeSubmit')
+                {
+                    $frontend->addUser(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']), strip_tags($_POST['email']));
                 }
         
             }

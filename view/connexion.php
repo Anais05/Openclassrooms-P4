@@ -14,7 +14,7 @@
 					<input type="submit" value="Se Connecter" />
 				</form>			
 
-				<a href="inscription.php">Inscrivez vous ici !</a>
+				<a href="index.php?action=subscribe">Pas encore inscrit ? Inscrivez vous ici !</a>
 			</div>
 	</section>
 

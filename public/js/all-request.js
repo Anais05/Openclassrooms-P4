@@ -144,7 +144,7 @@ function postComm(e) {
 
     $.ajax({
       type: "POST",
-      url: "comment.php",
+      url: "chapitres.php",
       data: {
         chap: chptr,
         membre: membre,

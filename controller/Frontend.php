@@ -15,6 +15,22 @@ class Frontend
         require('../view/home.php');
     }
 
+    public function chapitre()
+    {
+        $ChapitreManager = new ChapitreManager();
+        $CommentManager = new CommentManager();
+        $chapitre = $ChapitreManager->getChap($_GET['chap']);
+        if ($chapitre) {
+            $comments = $CommentManager->getAll($_GET['chap']);
+
+        } else {
+            header('Location: index.php');
+        }
+
+        require('../view/chapitres.php');
+
+    }
+
     public function displayLogin()
     {
         require('../view/connexion.php');
@@ -48,17 +64,74 @@ class Frontend
 
     public function logout()
     {
-        // Suppression des variables de session et de la session
         $_SESSION = array();
         session_destroy();
-
-        // Suppression des cookies de connexion automatique
         setcookie('login', '');
         setcookie('pass_hache', '');
         header('Location: index.php');
     }
 
-    
+    public function displayinscription()
+    {
+        require('../view/inscription.php');
+    }
+
+    public function addUser($pseudo,$mot_de_passe,$email)
+    {
+       $UserManager = new UserManager();
+
+			$pseudo = $_POST['pseudo'];
+			$pwd1 = $_POST['pass'];
+			$pwd2 = $_POST['pass_confirm'];
+            $email = $_POST['email'];
+
+            if (!empty($pseudo) && !empty($pwd1) && !empty($pwd2) && !empty($email))
+            {
+                $member = $UserManager->checkPseudo($pseudo);
+                if ($member)
+                {
+                    require('../view/inscription.php');
+                    echo "<p class ='subscribeError'> Pseudo déjà utilisé ! </p>" ;
+                    die();
+                }
+                else
+                {
+                    if($pwd1==$pwd2)
+                    {
+                        $pass_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+                        $insert = $UserManager -> createUser($pseudo,$pass_hache,$email);
+                        header('Location: index.php?action=login');
+                    }
+                    else
+                    {
+                        require('../view/inscription.php');
+                        echo "<p class ='subscribeError'> Les mots de passe ne se correspondent pas !</p>";
+                    }
+                }
+            }
+            else {
+                require('../view/inscription.php');
+				echo "<p class ='subscribeError'> Tous les champs ne sont pas remplis !</p>";
+			}
+
+    }
+
+    public function addComm()
+    {
+        $CommentManager = new commentManager();
+        if(isset($_POST['membre']) && isset($_POST['content'])){
+            $id_membre = $_POST['membre'];
+            $commentaire = $_POST['content'];
+            if(empty($_SESSION)){
+                echo "<p class ='seConnecter'> Vous n'êtes pas connecter, veuillez vous connecter <a href='index.php?action=login'>ici !</a><p>";
+
+            } elseif (!empty($_SESSION["pseudo"])) {
+                $id = $_GET['chap'];
+                $comment = $CommentManager->addAndDisplayComm($id_membre, $id,$commentaire);
+                header('location: index.php?action=chapitre&chap='.$id);
+            }
+        }
+    }
 
     
 }
