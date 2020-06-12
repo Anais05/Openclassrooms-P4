@@ -1,8 +1,3 @@
-<?php 
-session_start();
-$title = "Panneau admin"; 
-require('../POO/ChapitreManager.php');?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -19,9 +14,11 @@ require('../POO/ChapitreManager.php');?>
         <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
         <link rel="shortcut icon" type="image/x-icon" href="">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <title>Panneaux d'administration </title>
+        <title><?= $title ?></title>
     </head>
+
     <body>
+
 
         <div id="page">
 
@@ -34,9 +31,9 @@ require('../POO/ChapitreManager.php');?>
                             <?php
                                     
                                     if (!empty($_SESSION))  {
-                                        echo '<li><a href="deconnexion.php">Déconnexion</a></li>';
+                                        echo '<li><a href="index.php?action=logout">Déconnexion</a></li>';
                                     } 
-                                    else if (!empty($_SESSION)) {
+                                    if (!empty($_SESSION)) {
                                         echo "<li class = 'utilisateur'><i class='fas fa-user'></i>" . htmlspecialchars($_SESSION['pseudo']) . "</li>";
                                     }
                                 ?>                            
@@ -53,33 +50,16 @@ require('../POO/ChapitreManager.php');?>
             <section id="container">
 
                 <div id="sidebar">
-                    <img src="../img/1.jpg" alt="montagne">
+                <img src="../public/img/1.jpg" alt="montagne">
                     <p> Bienvenue sur mon blog ! Pour mon 3e ouvrage, j'ai décidé d'innover et de rendre ce livre interactif.
                     j'ai eu l'idée de partager mon nouveau roman <span>"Billet Simple pour l'Alaska" </span>de manière innovante et entièrement gratuite. Un nouveau chapitre sera posté au fur et à mesure sur le blog. N’hésitez pas à laisser des commentaires. Bonne lecture à tous ! <br> <span>Jean Forteroche</span> </p>
                 </div>
 
                 <div class ="content">
-                    <h2 id ="admin-chap">Chapitres</h2>
-
-                    <?php 
-                        $ChapitreManager = new chapitreManager();
-                        $chapitres = $ChapitreManager->getList();
-                        foreach ($chapitres as $chapitre)
-                        { 
-                    ?>
-                
-                        <p class ='titre-chap'><?=$chapitre ->getTitle()?></p>
-                        <p class = 'date'> Publié le : <?=$chapitre ->getDate()?></p>
-                        <p class ='chap'><?=substr($chapitre ->getTexte(), 0, 500)?></p>
-                        <div id ='lesModif'>
-                            <a class = 'afficher-chap' href="chapitres.php?chap=<?=$chapitre ->getId()?>">Afficher</a>
-                            <a class = 'modif-chap' href="modifier.php?chap=<?=$chapitre ->getId()?>">Modifier </a>
-                        </div>
-                    <?php 
-                        }
-                    
-                    ?>
+                    <?= $content ?>
                 </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+                <script src="../js/all-request.js"></script>
             </section>
         </div>
     </body>

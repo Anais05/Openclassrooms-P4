@@ -28,7 +28,7 @@
                         <ul>
                             <li><a href="index.php">Accueil</a></li>
                             <li><a href="">Chapitre</a></li>
-                            <li><a href="adminlogin.php">Admin</a></li>
+                            <li><a href="index.php?action=adminLogin">Admin</a></li>
 
                                 <?php
                                     if (!empty($_SESSION))  {

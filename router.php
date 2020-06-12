@@ -1,5 +1,7 @@
 <?php
 require('controller/Frontend.php');
+require('controller/Backend.php');
+
 
 class router 
 {
@@ -8,6 +10,7 @@ class router
         try 
         {
             $frontend = new Frontend();
+            $backend = new Backend();
 
             if (isset($_GET['action'])) 
             {
@@ -29,7 +32,7 @@ class router
                 }
                 elseif($_GET['action'] == 'loginSubmit')
                 {
-                    $frontend->loginSubmit(strip_tags($_POST['pseudo']), strip_tags($_POST['mot_de_passe']));
+                    $frontend->loginSubmit(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']));
                 }
                 elseif ($_GET['action'] == 'logout') 
                 {
@@ -42,6 +45,14 @@ class router
                 elseif ($_GET['action'] == 'subscribeSubmit')
                 {
                     $frontend->addUser(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']), strip_tags($_POST['email']));
+                }
+                elseif ($_GET['action'] == 'adminLogin') 
+                {
+                    $backend->displayAdminLogin();
+                }
+                elseif ($_GET['action'] == 'adminSubmit') 
+                {
+                    $backend->adminLoginSubmit(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']));
                 }
         
             }

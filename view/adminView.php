@@ -1,4 +1,5 @@
-<?php $title = 'Billet simple pour l\'Alaska'; ?>
+<?php $title = 'Panneau admin'; ?>
+
 
 <?php ob_start(); ?>
 <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
@@ -13,12 +14,14 @@
     <p class ='titre-chap'><?=$chapitre ->getTitle()?></p>
     <p class = 'date'> Publié le : <?=$chapitre ->getDate()?></p>
     <p class ='chap'><?=substr($chapitre ->getTexte(), 0, 500)?></p>
-    <a class = 'suite-chap' href="index.php?action=chapitre&chap=<?=$chapitre ->getId()?>">Lire la suite ...</a> </br>
+    <div id ='lesModif'>
+        <a class = 'afficher-chap' href="index.php?action=chapitre&chap=<?=$chapitre ->getId()?>">Afficher</a>
+        <a class = 'modif-chap' href="modifier.php?chap=<?=$chapitre ->getId()?>">Modifier </a>
+    </div>
 <?php 
     }
 ?> 
         
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
-
+<?php require('adminTemplate.php'); ?>

@@ -24,7 +24,6 @@ class CommentManager extends BddConnection
     {
         $bdd = $this->dbConnect();
         $req = $bdd->prepare("INSERT INTO commentaires( id_membre, id_post, commentaire, date_ajout , statut) VALUES(:id_membre, :id_post, :commentaire, now(), false)");
-        var_dump($id_membre);
          $req->execute([
             'id_membre' => $id_membre,
             'id_post' => $id_post,

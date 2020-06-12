@@ -37,6 +37,7 @@ class UserManager extends BddConnection
     public function createUser($pseudo,$pass_hache,$email)
     {
         $bdd = $this->dbConnect();
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') 
 		{
             $newUser = $bdd->prepare('INSERT INTO membres(pseudo, mot_de_passe, email) VALUES(:pseudo, :mot_de_passe, :email)');
@@ -48,6 +49,21 @@ class UserManager extends BddConnection
         return $newUser;
 			   
 			
+    }
+
+    public function adminLogin($pseudo)
+    {
+        $bdd = $this->dbConnect();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+        {
+            $req = $bdd->prepare('SELECT id, mot_de_passe FROM administration WHERE pseudo = :pseudo');
+            $req->execute(array(
+                'pseudo' => $pseudo));
+            $admin = $req->fetch();
+            return $admin;
+        }
+
     }
    
 }
