@@ -15,12 +15,12 @@ $title = "Affichage chapitres"; ?>
 		
 		<h2 class ='titre-chap'><?= $chapitre->getTitle() ?></h2>
 		<p class ='date'><?= $chapitre->getDate() ?></p>
-		<div class ='chap'><?= $chapitre->getTexte() ?></h2>
+		<div class ='chap'><?=nl2br($chapitre->getTexte()) ?></h2>
 	<?php 
 		}
 	?> 
 
-</div>
+	</div>
 
 
 	
@@ -60,9 +60,6 @@ $title = "Affichage chapitres"; ?>
 			
 		
 	</div>
-
-	    <div id="mssg2"></div>
-
 
 		<div class="formulaire-comm">
 			<form id="new-comm" action="index.php?action=addComm&chap=<?= $chapitre->getId()?>" method="post">

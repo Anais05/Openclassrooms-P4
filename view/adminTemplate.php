@@ -12,8 +12,10 @@
         <meta property="og:image" content="" />
 
         <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
         <link rel="shortcut icon" type="image/x-icon" href="">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://cdn.tiny.cloud/1/jl6f24ufioica8cezqjtsyw38b0bbm09z9wyvnu3rnqnfatl/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <title><?= $title ?></title>
     </head>
 
@@ -27,7 +29,7 @@
                     <nav id="menu">
                         <ul>
                             <li><a href="index.php">Accueil</a></li>
-                            <li><a href="createpost.php">Ajouter un chapitre</a></li>
+                            <li><a href="index.php?action=createpost">Ajouter un chapitre</a></li>
                             <?php
                                     
                                     if (!empty($_SESSION))  {
@@ -59,7 +61,9 @@
                     <?= $content ?>
                 </div>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
-                <script src="../js/all-request.js"></script>
+                <script src="../public/js/all-request.js"></script>
+                <script src="../public/js/texteditor.js"></script>
+
             </section>
         </div>
     </body>

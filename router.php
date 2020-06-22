@@ -54,6 +54,32 @@ class router
                 {
                     $backend->adminLoginSubmit(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']));
                 }
+                elseif($_GET['action'] == 'adminHome')
+                {
+                    $backend->adminHome();
+                }
+                elseif($_GET['action'] == 'modifier')
+                {
+                    $backend->displayEditPannel();
+                }
+                elseif($_GET['action'] == 'createpost')
+                {
+                    $backend->displayFormNewPost();
+                }
+                elseif($_GET['action'] == 'newchap')
+                {
+                    $backend->createNewPost();
+                }
+                elseif($_GET['action'] == 'updatePost')
+                {
+                    $backend->updateCurrentPost($_POST['title'], $_POST['content'], $_GET['chap']);
+
+                }
+                elseif($_GET['action'] == 'deleteChap')
+                {
+                    $backend->deleteCurrentPost($_GET['chap']);
+                }
+        
         
             }
             else {

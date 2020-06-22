@@ -10,9 +10,11 @@
   margin-top: 10%;
 }
 
-#creation .formulaire {
+#creation .formulaire,
+#modifier .formulaire {
   width: 90%;
   margin: 25px;
+  box-shadow: none;
 }
 
 .formulaire-comm {

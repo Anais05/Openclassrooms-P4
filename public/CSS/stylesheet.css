@@ -121,7 +121,7 @@ h1 span {
 }
 
 #admin-chap {
-  border-bottom: 6px double #ff1a1a;
+  border-bottom: 3px double #ff1a1a;
   text-align: center;
   padding: 5px;
 }
@@ -177,9 +177,10 @@ h1 span {
 
 #petit-trait {
   width: 800px;
-  height: 1px;
+  height: 2px;
   background-color: #ccc;
   margin: auto;
+  margin-top: 40px;
 }
 
 #lesCommentaires {
@@ -236,23 +237,20 @@ h3 {
   background-color: transparent;
 }
 
-/* editeur de texte pour la modification des chapitres */
-
-textarea #edit {
-  width: 300px;
-  height: 500px;
-}
-
 .mssg,
-mssg2 {
+.mssg2 {
   text-transform: uppercase;
   font-weight: bold;
   color: red;
 }
 
-#retour,
-#btn-save,
-#btn-delete {
+#modifier,
+#creation {
+  display: flex;
+  flex-direction: column;
+}
+
+#retour {
   border-radius: 5px;
   border: 2px solid #1a53ff;
   padding: 8px;
@@ -260,12 +258,11 @@ mssg2 {
   text-decoration: none;
   font-size: 20px;
   background-color: transparent;
-  margin-top: 20px;
+  text-align: center;
 }
-
-#button {
-  display: flex;
-  justify-content: space-around;
+#Backbutton {
+  margin: 35px;
+  align-self: flex-end;
 }
 
 @media all and (max-width: 1000px) {

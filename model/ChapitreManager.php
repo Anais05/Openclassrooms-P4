@@ -9,7 +9,7 @@ class ChapitreManager extends BddConnection
         $bdd = $this->dbConnect();
         $chapitres = [];
 
-		$query = $bdd->query("SELECT id, titre, texte, date_post FROM chapitres ORDER BY date_post DESC LIMIT 0, 5");
+		$query = $bdd->query("SELECT id, titre, texte, date_post FROM chapitres ORDER BY id ASC LIMIT 0, 10");
 
 		while ($donnees = $query->fetch(PDO::FETCH_ASSOC))
 		{
@@ -38,33 +38,42 @@ class ChapitreManager extends BddConnection
     public function addPost($titre, $texte)
     {
         $bdd = $this->dbConnect();
-        $query =  $bdd->prepare("INSERT INTO chapitres( date_post, titre, texte) VALUES( now(), :titre, :texte)");
-        $newPost = $query->execute(array($titre, $texte));
-        return $newPost;
-       
+        $req =  $bdd->prepare("INSERT INTO chapitres( date_post, titre, texte) VALUES( now(), :titre, :texte)");
+        $req->execute([
+            'titre' => $titre,
+		    'texte' => $texte
+        ]);
     }
 
-    // public function update()
-    // {
-    //     $bdd = $this->dbConnect();
-    //     $query = $bdd->prepare("UPDATE chapitres SET titre = :titre, texte = :texte, date_post = now() WHERE id = :id");
-    //     $query->execute([
-    //         ':title' => $chapitre->getTitre(),
-    //         ':texte' => $chapitre->getTexte(),
-    //         ':date_post' =>$chapitre->getDate(),
-    //         ':id' => $chapitre->getId()
-    //     ]);
-    // }
+    public function updatePost($titre, $texte, $id)
+    {
+        $bdd = $this->dbConnect();
+        if(isset($id) AND is_numeric($id))
+        {
+            $req = $bdd->prepare('UPDATE chapitres SET titre = :titre, texte = :texte, date_post = now() WHERE id = :id');
+            $update = $req->execute([
+                'titre' => $titre,
+                'texte' => $texte,
+                'id' => $id
 
-    // public function deletePost($id)
-    // {
-    //     $bdd = $this->dbConnect();
+            ]);
+            return $update;
+        }
+    }
 
-    //     $query = $bdd->prepare("DELETE FROM chapitre WHERE id = id");
-    //     $result = $query->execute([
-    //         $chapitre->getId()
-    //     ]);      
-    // }
+    public function deletePost($id)
+    {
+        
+        $bdd = $this->dbConnect();
+        if(isset($id) AND is_numeric($id))
+        {
+            $req = $bdd->prepare('DELETE FROM chapitres WHERE id = ?');
+            $req->execute(array($id));
+        }
+       
+  
+    }
+
 }
 
 

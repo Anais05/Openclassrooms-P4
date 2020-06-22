@@ -1,13 +1,15 @@
 <?php 
 $title = "Nouveau chapitre"; 
-require('../POO/ChapitreManager.php');
 ?>
 <?php ob_start(); ?>
 <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
 
 <section id="creation">
+	<div id="Backbutton">
+		<a id="retour" href="index.php?action=adminHome"><i class="fa fa-angle-left"></i> Retour aux chapitres</a>
+	</div>
 	<div class="formulaire">
-		<form id="new_chap" action="createpost.php" method="post">
+		<form id="new_chap" action="index.php?action=newchap" method="post">
 			<h1 class="titre-form">Ajouter un chapitre</h1>
 			<label for="title">Titre</label>
 			<input type="text" name="title" id="title" /></br>
@@ -17,18 +19,10 @@ require('../POO/ChapitreManager.php');
 		</form>
     </div>
 </section>
-<div id="lala"></div>
-
-<?php 
-	$ChapitreManager = new chapitreManager();
-	$newPost = $ChapitreManager->addPost($titre,$texte);
-	
-?>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
-<script>createChap();</script>
+<?php require('adminTemplate.php'); ?>
 
 
 

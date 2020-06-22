@@ -16,7 +16,8 @@
     <p class ='chap'><?=substr($chapitre ->getTexte(), 0, 500)?></p>
     <div id ='lesModif'>
         <a class = 'afficher-chap' href="index.php?action=chapitre&chap=<?=$chapitre ->getId()?>">Afficher</a>
-        <a class = 'modif-chap' href="modifier.php?chap=<?=$chapitre ->getId()?>">Modifier </a>
+        <a class = 'modif-chap' href="index.php?action=modifier&chap=<?=$chapitre ->getId()?>">Modifier </a>
+        <a class = 'delete-chap' href="index.php?action=deleteChap&chap=<?=$chapitre ->getId()?>">Supprimer </a>
     </div>
 <?php 
     }

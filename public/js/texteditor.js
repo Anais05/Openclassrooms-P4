@@ -1,7 +1,8 @@
 tinymce.init({
-  selector: "#edit",
+  selector: "#contentToUpdate",
   height: 500,
   menubar: false,
+  contextmenu: false,
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code fullscreen",

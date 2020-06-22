@@ -2,30 +2,41 @@
 $title = "Modification chapitre"; ?>
 
 <?php ob_start(); ?>
-<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
-
-<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
 
 	<body>
-		<h2>Modifier</h2>
-    	<textarea id="edit">
+		
 		<?php 
                 { 
-            ?>
-                <h3 id ='titre-update'><?= $chapitre->getTitle() ?></h2>
-                <div id = 'chap-update'><?= $chapitre->getTexte() ?></h2>
+			?>
+			<section id="modifier">
+				<div id="Backbutton">
+					<a id="retour" href="index.php?action=adminHome"><i class="fa fa-angle-left"></i> Retour aux chapitres</a>
+				</div>
+				<div class="formulaire">
+					<form id="updateform" action="index.php?action=updatePost&chap=<?= $chapitre->getId() ?>" method="post">
+						<div class="form-group">
+							<h1 class="titre-form">Modifier le chapitre</h1>
+						</div>
+						<div class="form-group">
+							<label for="title">Titre </label><br />
+							<input type="text" name="title" id ='title' value="<?= $chapitre->getTitle() ?>"/><br />
+						</div>
+						<div class="form-group">
+							<label for="content">Texte </label><br />
+							<textarea  id="contentToUpdate" name="content" rows="30" cols="180"> <?= $chapitre->getTexte() ?></textarea><br />
+						</div>
+						<div class="form-group">
+							<input id="update" type="submit" value="Enregister" />
+						</div>
+					</form>
+				</div>
+				
+			</section>
+               
             <?php 
                 }
             ?>
-    	</textarea>
     	
-    	<div id="button">
-	    	<button id="btn-save" >Enregistrer</button> 
-	    	<button id="btn-delete">Supprimer</button>
-	    	<a id="retour" href="index.php?action=adminHome">Retour</a>
-    	</div>
-
-    	<div id="mssg"></div>
 
 	</body>
 
@@ -33,4 +44,4 @@ $title = "Modification chapitre"; ?>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('adminTemplate.php'); ?>
-<script>updateChap();deleteChap()</script>  
+<!-- <script>updateChap();</script>   -->
