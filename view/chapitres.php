@@ -3,19 +3,24 @@ $title = "Affichage chapitres"; ?>
 <?php ob_start(); 
 ?>
 
-
-<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
-<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
-
 <div class ="LeChapitre">
 
 	<?php 
+	if (isset($_GET['deleteComm']) &&  $_GET['deleteComm'] == 'success') {
+		echo '<p id="success">Le commentaire a bient été supprimé !<p>';
+	}
+	elseif (isset($_GET['addComm']) &&  $_GET['addComm'] == 'success') {
+		echo '<p id="success">Le commentaire a bient été ajouté !<p>';
+	}
+	elseif (isset($_GET['report']) &&  $_GET['report'] == 'success') {
+		echo '<p id="success">Le commentaire a bient été signalé!<p>';
+    }
 		{ 
 	?>
 		
 		<h2 class ='titre-chap'><?= $chapitre->getTitle() ?></h2>
 		<p class ='date'><?= $chapitre->getDate() ?></p>
-		<div class ='chap'><?=nl2br($chapitre->getTexte()) ?></h2>
+		<div class ='chap'><?=htmlspecialchars_decode(nl2br($chapitre->getTexte()))?></h2>
 	<?php 
 		}
 	?> 
@@ -33,26 +38,46 @@ $title = "Affichage chapitres"; ?>
 	<?php
 		while ($comment = $comments->fetch()) {
 	?>
-			<div class = 'leComm' id =<?=$comment["id_comm"];?>>
+			<div class = 'leComm'>
 				<p class ='membre'><?= $comment["pseudo"];?></p>
-				<p class ='comm'><?= $comment["commentaire"];?></p>
-				<p class ='dateCommentaire'><?= $comment["date_ajout"];?></p>
-				</div>
 				<?php
-				if (isset($_SESSION['pseudo']) && ($_SESSION["pseudo"]=='admin'))
+				if ($comment["statut"] == 1)
+				{	?> 
+					<p class ='reported'><?= $comment["commentaire"];?></p>
+					<?php
+				}else
+				{
+					?>
+					<p class ='comm'><?= $comment["commentaire"];?></p>
+					<?php
+				}
+			?>
+				<p class ='dateCommentaire'><?= $comment["date_ajout"];?></p>
+			</div>
+
+				<?php
+				if ($comment["statut"] == 1)
+				{
+					?>
+						<p id ='reported'>Ce commentaire à été signalé !</p>
+					<?php
+				}
+				if(isset($_SESSION['pseudo']) && ($_SESSION["pseudo"]=='admin'))
 					{
 						?>
-						<button class ='supp-comm' id="<?=$comment["id_comm"]?>">Supprimer le commentaire </button>
+						<div class = 'buttonComm'>
+							<a class ='supp-comm' href="index.php?action=deletecomm&id=<?=$comment["id_comm"]?>&chap=<?= $_GET['chap']?>">Supprimer</a>
+						</div>
 						<?php
 					}
-					 else if (isset($_SESSION["pseudo"]))
+					elseif (isset($_SESSION["pseudo"]) && ($comment["statut"] != 1))
 					{
 						?>
-						<button class ='signaler' id="<?=$comment["id_comm"]?>">Signaler le commentaire</button>
-					
-					<?php
+						<div class = 'buttonComm'>
+							<a class ='signaler' href="index.php?action=report&id=<?=$comment["id_comm"]?>&chap=<?= $_GET['chap']?>">Signaler</a>
+						</div>
+						<?php
 					}
-					echo "<div id ='mssg2'><div>";
 				}
 
 		?>
@@ -60,15 +85,26 @@ $title = "Affichage chapitres"; ?>
 			
 		
 	</div>
+		<?php	
+			if (!empty($_SESSION)) {
+		?>
 
-		<div class="formulaire-comm">
-			<form id="new-comm" action="index.php?action=addComm&chap=<?= $chapitre->getId()?>" method="post">
-				<h1 class="titre-form">Laisser un commentaire</h1>
-				<input type="hidden" name="membre" id="membre-id" value=<?php if (isset($_SESSION['pseudo'])){echo $_SESSION['id'];}?>>
-				<label for="content">Commentaire</label>
-				<textarea name="content" rows="5" cols="180" id="comment"></textarea>
-				<input type="submit" id ="submit" value="Poster" />
-			</form>
+			<div class="formulaire-comm">
+				<form id="new-comm" action="index.php?action=addComm&chap=<?= $chapitre->getId()?>" method="post">
+					<h1 class="titre-form">Laisser un commentaire</h1>
+					<input type="hidden" name="membre" id="membre-id" value=<?php if (isset($_SESSION['pseudo'])){echo $_SESSION['id'];}?>>
+					<label for="content">Commentaire</label>
+					<textarea name="content" rows="5" cols="180" id="comment"></textarea>
+					<input type="submit" id ="submit" value="Poster" />
+				</form>
+			</div>
+		<?php
+			}
+			else{
+				echo "<p class ='seConnecter'>Pour lasser un commentaire  veuillez vous connecter <a href='index.php?action=login'>ici !</a><p>";
+			}
+		?>
+
 
 
 </div>
@@ -77,4 +113,3 @@ $title = "Affichage chapitres"; ?>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
-<script>deleteComm();reportComm();postComm();</script>  

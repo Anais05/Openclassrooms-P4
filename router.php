@@ -22,10 +22,6 @@ class router
                 {
                     $frontend->chapitre();
                 }
-                elseif ($_GET['action'] == 'addComm')
-                {
-                    $frontend->addComm();
-                }
                 elseif($_GET['action'] == 'login')
                 {
                     $frontend->displayLogin();
@@ -45,6 +41,14 @@ class router
                 elseif ($_GET['action'] == 'subscribeSubmit')
                 {
                     $frontend->addUser(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']), strip_tags($_POST['email']));
+                }
+                elseif ($_GET['action'] == 'addComm')
+                {
+                    $frontend->addComm();
+                }
+                elseif ($_GET['action'] == 'report')
+                {
+                    $frontend->reportComm($_GET['id']);
                 }
                 elseif ($_GET['action'] == 'adminLogin') 
                 {
@@ -73,11 +77,14 @@ class router
                 elseif($_GET['action'] == 'updatePost')
                 {
                     $backend->updateCurrentPost($_POST['title'], $_POST['content'], $_GET['chap']);
-
                 }
                 elseif($_GET['action'] == 'deleteChap')
                 {
                     $backend->deleteCurrentPost($_GET['chap']);
+                }
+                elseif($_GET['action'] == 'deletecomm')
+                {
+                    $backend->deleteComm($_GET['id']);
                 }
         
         

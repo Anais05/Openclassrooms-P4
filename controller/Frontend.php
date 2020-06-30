@@ -122,16 +122,23 @@ class Frontend
         if(isset($_POST['membre']) && isset($_POST['content'])){
             $id_membre = $_POST['membre'];
             $commentaire = $_POST['content'];
-            if(empty($_SESSION)){
-                echo "<p class ='seConnecter'> Vous n'êtes pas connecter, veuillez vous connecter <a href='index.php?action=login'>ici !</a><p>";
-
-            } elseif (!empty($_SESSION["pseudo"])) {
-                $id = $_GET['chap'];
-                $comment = $CommentManager->addAndDisplayComm($id_membre, $id,$commentaire);
-                header('location: index.php?action=chapitre&chap='.$id);
-            }
+            $id = $_GET['chap'];
+            $comment = $CommentManager->addComm($id_membre, $id,$commentaire);
+            header('location: index.php?action=chapitre&chap='.$id.'&addComm=success');
         }
     }
+
+    public function reportComm($id)
+    {
+        $CommentManager = new commentManager();
+        $id = $_GET['id'];
+        $id_chap = $_GET['chap'];
+        $comment = $CommentManager->report($id);
+        header('location: index.php?action=chapitre&chap='.$id_chap.'&report=success');
+         
+    }
+
+
 
     
 }

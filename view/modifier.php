@@ -6,6 +6,9 @@ $title = "Modification chapitre"; ?>
 	<body>
 		
 		<?php 
+		if (isset($_GET['updatePost']) &&  $_GET['updatePost'] == 'success') {
+			echo '<p id="success">Le chapitre a bient été modifié !<p>';
+		}
                 { 
 			?>
 			<section id="modifier">
@@ -23,7 +26,7 @@ $title = "Modification chapitre"; ?>
 						</div>
 						<div class="form-group">
 							<label for="content">Texte </label><br />
-							<textarea  id="contentToUpdate" name="content" rows="30" cols="180"> <?= $chapitre->getTexte() ?></textarea><br />
+							<textarea  id="contentToUpdate" name="content" rows="30" cols="180"> <?=htmlspecialchars_decode(nl2br($chapitre->getTexte()))?></textarea><br />
 						</div>
 						<div class="form-group">
 							<input id="update" type="submit" value="Enregister" />
@@ -44,4 +47,3 @@ $title = "Modification chapitre"; ?>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('adminTemplate.php'); ?>
-<!-- <script>updateChap();</script>   -->

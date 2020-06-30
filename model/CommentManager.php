@@ -20,35 +20,32 @@ class CommentManager extends BddConnection
     } 
 
 
-    public function addAndDisplayComm($id_membre, $id_post,$commentaire)
+    public function addComm($id_membre, $id_post,$commentaire)
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("INSERT INTO commentaires( id_membre, id_post, commentaire, date_ajout , statut) VALUES(:id_membre, :id_post, :commentaire, now(), false)");
-         $req->execute([
+        $comments = $bdd->prepare("INSERT INTO commentaires( id_membre, id_post, commentaire, date_ajout , statut) VALUES(:id_membre, :id_post, :commentaire, now(), false)");
+         $comments->execute([
             'id_membre' => $id_membre,
             'id_post' => $id_post,
             'commentaire' => $commentaire
         ]);
+        return $comments;
 
     }
-
-
 
     public function delete($id)
     {
+        $bdd = $this->dbConnect();
         $query = $bdd->prepare("DELETE FROM commentaires WHERE id_comm = ?");
-        $result = $query->execute([
-           $id
-        ]);
+        $result = $query->execute(array($id));
 
     }
 
-     public function report()
+     public function report($id)
     {
-        $query = $this->db->prepare("UPDATE commentaires SET statut = :true WHERE id_comm = ?");
-        $result = $query->execute([
-            $commentaire->getId_comm()
-        ]);
-
+        var_dump($id);
+        $bdd = $this->dbConnect();
+        $query = $bdd->prepare("UPDATE commentaires SET statut = 1 WHERE id_comm = ?");
+        $query->execute(array($id));
     }
 }

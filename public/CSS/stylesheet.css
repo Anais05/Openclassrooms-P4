@@ -207,6 +207,12 @@ h3 {
   font-weight: bold;
 }
 
+.reported {
+  text-align: center;
+  font-weight: bold;
+  color: red;
+}
+
 .dateCommentaire {
   text-align: right;
   font-weight: bold;
@@ -214,7 +220,6 @@ h3 {
 }
 
 .membre {
-  color: #ff3333;
   font-weight: bold;
 }
 
@@ -228,20 +233,24 @@ h3 {
   text-decoration: none;
 }
 
+.buttonComm {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 .supp-comm,
 .signaler {
   color: red;
-  border: none;
   font-weight: bold;
-  font-size: 15px;
-  background-color: transparent;
+  font-size: 20px;
+  text-decoration: none;
 }
 
-.mssg,
-.mssg2 {
-  text-transform: uppercase;
-  font-weight: bold;
+#reported {
   color: red;
+  font-size: 20px;
+  text-align: left;
 }
 
 #modifier,
@@ -263,6 +272,14 @@ h3 {
 #Backbutton {
   margin: 35px;
   align-self: flex-end;
+}
+
+/* success and error message */
+
+#success {
+  color: #008000;
+  font-weight: bold;
+  text-align: center;
 }
 
 @media all and (max-width: 1000px) {

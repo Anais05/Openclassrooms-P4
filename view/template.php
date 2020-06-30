@@ -13,6 +13,7 @@
         <meta property="og:image" content="" />
 
         <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css"> 
         <link rel="shortcut icon" type="image/x-icon" href="">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <title><?= $title ?></title>
@@ -63,7 +64,7 @@
                     <?= $content ?>
                 </div>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
-                <script src="../js/all-request.js"></script>
+                <script src="../public/js/messages.js"></script>
             </section>
         </div>
     </body>

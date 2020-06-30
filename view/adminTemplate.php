@@ -61,8 +61,8 @@
                     <?= $content ?>
                 </div>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
-                <script src="../public/js/all-request.js"></script>
                 <script src="../public/js/texteditor.js"></script>
+                <script src="../public/js/messages.js"></script>
 
             </section>
         </div>
