@@ -55,17 +55,41 @@
             <section id="container">
 
                 <div id="sidebar">
-                    <img src="../public/img/1.jpg" alt="montagne">
-                    <p> Bienvenue sur mon blog ! Pour mon 3e ouvrage, j'ai décidé d'innover et de rendre ce livre interactif.
-                    j'ai eu l'idée de partager mon nouveau roman <span>"Billet Simple pour l'Alaska" </span>de manière innovante et entièrement gratuite. Un nouveau chapitre sera posté au fur et à mesure sur le blog. N’hésitez pas à laisser des commentaires. Bonne lecture à tous ! <br> <span>Jean Forteroche</span> </p>
+                    <img src="../public/img/intro.jpg" alt="montagne">
+                    <p> Bienvenue sur mon blog ! Pour mon 5e ouvrage, j'ai décidé d'innover et de rendre ce livre interactif.
+                    j'ai eu l'idée de partager mon nouveau roman <span>"Billet Simple pour l'Alaska" </span>de manière innovante et entièrement gratuite. Un nouveau chapitre sera posté au fur et à mesure sur le blog. N’hésitez pas à laisser des commentaires. Bonne lecture à tous ! 
+                    <span>Jean Forteroche</span> </p>
                 </div>
 
                 <div class="content">
                     <?= $content ?>
                 </div>
+
+            </section>
+
+
+            <footer>
+                <div id="footer">
+                    <div id="siteLink">
+                        <h3>Navigation</h3>
+                        <div  id="siteLink">
+                            <a href="index.php">Accueil</a><br />
+                            <a href="index.php?action=login" >Connexion</a><br />
+                            <a href="index.php?action=subscribe">Inscription</a><br />
+                        </div>
+                    </div>
+                    <div class="about">
+                        <h3>En savoir plus</h3>
+                        <div id="about">
+                            <a href="index.php?action=biographie" class="text-white">L'auteur</a><br />
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
                 <script src="../public/js/messages.js"></script>
-            </section>
+            
         </div>
     </body>
 </html>

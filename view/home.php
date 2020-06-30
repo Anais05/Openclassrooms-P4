@@ -12,7 +12,7 @@
 ?>
     <p class ='titre-chap'><?=$chapitre ->getTitle()?></p>
     <p class = 'date'> Publié le : <?=$chapitre ->getDate()?></p>
-    <p class ='chap'><?=substr($chapitre ->getTexte(), 0, 500)?></p>
+    <p class ='chap'><?=htmlspecialchars_decode(substr($chapitre ->getTexte(), 0, 500))?></p>
     <a class = 'suite-chap' href="index.php?action=chapitre&chap=<?=$chapitre ->getId()?>">Lire la suite ...</a> </br>
 <?php 
     }

@@ -50,6 +50,10 @@ class router
                 {
                     $frontend->reportComm($_GET['id']);
                 }
+                elseif($_GET['action'] == 'biographie')
+                {
+                    $frontend->displayBio();
+                }
                 elseif ($_GET['action'] == 'adminLogin') 
                 {
                     $backend->displayAdminLogin();
@@ -86,6 +90,7 @@ class router
                 {
                     $backend->deleteComm($_GET['id']);
                 }
+                
         
         
             }

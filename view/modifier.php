@@ -17,20 +17,14 @@ $title = "Modification chapitre"; ?>
 				</div>
 				<div class="formulaire">
 					<form id="updateform" action="index.php?action=updatePost&chap=<?= $chapitre->getId() ?>" method="post">
-						<div class="form-group">
-							<h1 class="titre-form">Modifier le chapitre</h1>
-						</div>
-						<div class="form-group">
+							<h1 class="titre-form">Modifier chapitre</h1>
 							<label for="title">Titre </label><br />
 							<input type="text" name="title" id ='title' value="<?= $chapitre->getTitle() ?>"/><br />
-						</div>
-						<div class="form-group">
+					
 							<label for="content">Texte </label><br />
-							<textarea  id="contentToUpdate" name="content" rows="30" cols="180"> <?=htmlspecialchars_decode(nl2br($chapitre->getTexte()))?></textarea><br />
-						</div>
-						<div class="form-group">
+							<textarea  id="contentToUpdate" name="content" rows="30" cols="180"> <?=nl2br($chapitre->getTexte())?></textarea><br />
+					
 							<input id="update" type="submit" value="Enregister" />
-						</div>
 					</form>
 				</div>
 				

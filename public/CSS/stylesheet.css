@@ -82,7 +82,7 @@ h1 span {
   font-size: 1.3em;
 }
 
-/* content */
+/* sidebar */
 
 #sidebar {
   margin-top: 20px;
@@ -108,6 +108,8 @@ h1 span {
   font-weight: bold;
 }
 
+/* content */
+
 .content {
   width: 65%;
 }
@@ -119,6 +121,8 @@ h1 span {
   justify-content: space-around;
   flex-direction: row;
 }
+
+/* affichage chapitres */
 
 #admin-chap {
   border-bottom: 3px double #ff1a1a;
@@ -151,6 +155,7 @@ h1 span {
   background-color: #e6eeff;
   color: #ff1a1a;
 }
+
 #lesModif {
   display: flex;
   flex-direction: row;
@@ -169,7 +174,7 @@ h1 span {
   color: #000;
 }
 
-/* affichage chapitres et commentaires */
+/* affichage commentaires */
 
 #leChapitre {
   margin: 25px;
@@ -223,16 +228,6 @@ h3 {
   font-weight: bold;
 }
 
-.seConnecter {
-  color: red;
-  font-size: 1em;
-  font-weight: bold;
-}
-
-.seConnecter a {
-  text-decoration: none;
-}
-
 .buttonComm {
   display: flex;
   flex-direction: row;
@@ -274,12 +269,78 @@ h3 {
   align-self: flex-end;
 }
 
+/* connextion */
+
+.seConnecter {
+  color: red;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.seConnecter a {
+  text-decoration: none;
+}
+
 /* success and error message */
 
 #success {
   color: #008000;
   font-weight: bold;
   text-align: center;
+}
+
+/* biographie */
+
+#biographie h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.8em;
+}
+
+#biographie p {
+  line-height: 2em;
+  font-size: 1.2em;
+}
+
+#biographie span {
+  font-style: italic;
+}
+
+#biographie img {
+  float: left;
+  margin-right: 20px;
+}
+
+/* footer */
+
+#footer {
+  background-color: #b3ccff;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#footer h3 {
+  color: #002699;
+}
+
+#footer a {
+  color: #0d0d0d;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0;
+}
+
+#footer a:hover {
+  color: #002699;
+}
+
+#siteLink,
+#about {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 @media all and (max-width: 1000px) {

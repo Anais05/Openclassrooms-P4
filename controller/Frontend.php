@@ -31,6 +31,11 @@ class Frontend
 
     }
 
+    public function displayBio()
+    {
+        require('../view/biographie.php');
+    }
+
     public function displayLogin()
     {
         require('../view/connexion.php');
