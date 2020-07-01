@@ -29,8 +29,6 @@
                         <ul>
                             <li><a href="index.php">Accueil</a></li>
                             <li><a href="">Chapitre</a></li>
-                            <li><a href="index.php?action=adminLogin">Admin</a></li>
-
                                 <?php
                                     if (!empty($_SESSION))  {
                                         echo '<li><a href="index.php?action=logout">Déconnexion</a></li>';
@@ -41,6 +39,7 @@
                                         echo "<li class = 'utilisateur'><i class='fas fa-user'></i>" . htmlspecialchars($_SESSION['pseudo']) . "</li>";
                                     }
                                 ?>
+                            <li><a href="index.php?action=adminLogin">Admin</a></li>
                                 
                         </ul>
                     </nav>

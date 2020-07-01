@@ -37,8 +37,20 @@ class CommentManager extends BddConnection
     {
         $bdd = $this->dbConnect();
         $query = $bdd->prepare("DELETE FROM commentaires WHERE id_comm = ?");
-        $result = $query->execute(array($id));
+        $query->execute(array($id));
 
+    }
+
+    public function deletePostComment($id)
+    {
+        
+        $bdd = $this->dbConnect();
+        if(isset($id) AND is_numeric($id))
+        {
+            $req = $bdd->prepare('DELETE FROM commentaires WHERE id_post = ?');
+            $req->execute(array($id));
+        }
+       
     }
 
      public function report($id)

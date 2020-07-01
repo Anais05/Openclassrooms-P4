@@ -99,8 +99,10 @@ class Backend
     {
 
         $ChapitreManager = new ChapitreManager();
+        $CommentManager = new commentManager();
         $id = $_GET['chap'];
         $chapitre = $ChapitreManager->deletePost($id);
+        $comment = $CommentManager->deletePostComment($id);
         header('location: index.php?action=adminHome&deletePost=success');
 
     

@@ -71,7 +71,6 @@ class ChapitreManager extends BddConnection
             $req->execute(array($id));
         }
        
-  
     }
 
 }
