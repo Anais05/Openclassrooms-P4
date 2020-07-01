@@ -15,6 +15,7 @@ header {
   background-color: #b3ccff;
   position: fixed;
   z-index: 65;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 nav ul {
@@ -76,12 +77,16 @@ h1 span {
 }
 
 .body {
-  color: #1a1a1a;
   display: flex;
-  align-items: center;
   justify-content: center;
   padding: 5%;
-  font-size: 1.3em;
+}
+
+.body h2 {
+  font-size: 1.8em;
+  background-color: rgb(255, 255, 255, 0.5);
+  border: 1px solid black;
+  padding: 20px;
 }
 
 /* sidebar */
@@ -291,6 +296,12 @@ h3 {
   text-align: center;
 }
 
+#unsuccess {
+  color: #e60000;
+  font-weight: bold;
+  text-align: center;
+}
+
 /* biographie */
 
 #biographie h2 {
@@ -306,6 +317,7 @@ h3 {
 
 #biographie span {
   font-style: italic;
+  font-weight: bold;
 }
 
 #biographie img {
@@ -320,6 +332,7 @@ h3 {
   margin-top: 30px;
   display: flex;
   justify-content: space-evenly;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 #footer h3 {
@@ -328,7 +341,7 @@ h3 {
 
 #footer a {
   color: #0d0d0d;
-  font-weight: bold;
+  font-weight: 500;
   text-decoration: none;
   margin: 0;
 }
@@ -340,9 +353,8 @@ h3 {
 #siteLink,
 #about {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  line-height: 1.3em;
+  font-style: italic;
 }
 
 @media all and (max-width: 1220px) {

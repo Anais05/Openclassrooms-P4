@@ -37,7 +37,7 @@ class Backend
 
         if (!$admin)
         {
-            echo ' Identifiant ou mot de passe incorrect !';
+            header('Location: index.php?action=adminLogin&admin=unsuccess');
         }
         else
         {
@@ -50,7 +50,7 @@ class Backend
                 require('../view/adminView.php');
             }
             else {
-                echo 'Identifiant ou mot de passe incorrect ici  !';
+                header('Location: index.php?action=adminLogin&admin=unsuccess');
             }
         }
     }
@@ -79,7 +79,6 @@ class Backend
         }
         else {
             header('location: index.php?action=createpost&newPost=unsuccess');
-            echo "<p class ='adminError'> Contenu vide !</p>";
         }
 
     }

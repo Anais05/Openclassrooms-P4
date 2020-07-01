@@ -14,7 +14,6 @@
 #modifier .formulaire {
   width: 90%;
   margin: 25px;
-  box-shadow: none;
 }
 
 .formulaire-comm {
@@ -70,18 +69,16 @@ input[type="submit"]:hover {
 }
 
 .formulaire a {
-  color: #cc0000;
+  color: #1a53ff;
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-.formulaire a:hover {
-  color: #ff4d4d;
+.formulaire p {
+  text-align: center;
 }
 
-.subscribeError {
-  color: red;
-  font-weight: bold;
-  text-align: center;
+.formulaire a:hover {
+  color: #cc0000;
 }

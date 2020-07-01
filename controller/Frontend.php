@@ -50,7 +50,7 @@ class Frontend
 
 			if (!$user)
 			{
-                echo ' Identifiant ou mot de passe incorrect !';
+                header('Location: index.php?action=login&user=unsuccess');
 			}
 			else
 			{
@@ -62,7 +62,7 @@ class Frontend
 			        header('Location: index.php');
 			    }
 			    else {
-			        echo 'Identifiant ou mot de passe incorrect ici  !';
+                    header('Location: index.php?action=login&user=unsuccess');
 			    }
 			}
     }
@@ -95,9 +95,8 @@ class Frontend
                 $member = $UserManager->checkPseudo($pseudo);
                 if ($member)
                 {
-                    require('../view/inscription.php');
-                    echo "<p class ='subscribeError'> Pseudo déjà utilisé ! </p>" ;
-                    die();
+                    header('location: index.php?action=subscribe&pseudo=unsuccess');
+                    
                 }
                 else
                 {
@@ -105,18 +104,17 @@ class Frontend
                     {
                         $pass_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
                         $insert = $UserManager -> createUser($pseudo,$pass_hache,$email);
-                        header('Location: index.php?action=login');
+                        header('Location: index.php?action=login&inscription=success');
                     }
                     else
                     {
-                        require('../view/inscription.php');
-                        echo "<p class ='subscribeError'> Les mots de passe ne se correspondent pas !</p>";
+                        header('location: index.php?action=subscribe&pass=unsuccess');
                     }
                 }
             }
             else {
-                require('../view/inscription.php');
-				echo "<p class ='subscribeError'> Tous les champs ne sont pas remplis !</p>";
+                header('location: index.php?action=subscribe&notempty=unsuccess');
+		
 			}
 
     }

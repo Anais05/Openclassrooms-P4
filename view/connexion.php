@@ -1,7 +1,16 @@
 <?php $title = "Connexion"; ?>
 
-
 <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
+<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
+
+	<?php 
+		if (isset($_GET['user']) &&  $_GET['user'] == 'unsuccess') {
+			echo "<p id='unsuccess'> Identifiant ou mot de passe incorrect !</p>";
+		}
+		elseif (isset($_GET['inscription']) &&  $_GET['inscription'] == 'success') {
+			echo '<p id="success"> Inscription réussie ! Connectez vous !<p>';
+		}
+	?>
 
 	<section id="login">
 			<div class="formulaire">
@@ -14,13 +23,11 @@
 					<input type="submit" value="Se Connecter" />
 				</form>			
 
-				<a href="index.php?action=subscribe">Pas encore inscrit ? Inscrivez vous ici !</a>
+				<p>Pas encore inscrit ? Inscrivez vous<a href="index.php?action=subscribe"> ici !</a></p>
 			</div>
 	</section>
-
-
-
-
+	
+<script src="../public/js/messages.js"></script>
 
 
 

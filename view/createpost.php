@@ -4,6 +4,11 @@ $title = "Nouveau chapitre";
 <?php ob_start(); ?>
 <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
 
+<?php
+	if (isset($_GET['newPost']) &&  $_GET['newPost'] == 'unsuccess') {
+		echo '<p id="unsuccess"> Contenu vide !<p>';
+	}
+?>
 <section id="creation">
 	<div id="Backbutton">
 		<a id="retour" href="index.php?action=adminHome"><i class="fa fa-angle-left"></i> Retour aux chapitres</a>
