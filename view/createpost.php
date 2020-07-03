@@ -2,7 +2,7 @@
 $title = "Nouveau chapitre"; 
 ?>
 <?php ob_start(); ?>
-<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
+<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
 
 <?php
 	if (isset($_GET['newPost']) &&  $_GET['newPost'] == 'unsuccess') {
@@ -15,7 +15,7 @@ $title = "Nouveau chapitre";
 	</div>
 	<div class="formulaire">
 		<form id="new_chap" action="index.php?action=newchap" method="post">
-			<h1 class="titre-form">Ajouter un chapitre</h1>
+			<h2 class="titre-form">Ajouter un chapitre</h2>
 			<label for="title">Titre</label>
 			<input type="text" name="title" id="title" /></br>
 			<label for="content">Texte</label>

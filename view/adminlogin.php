@@ -1,7 +1,6 @@
 <?php 
 $title = "Connection admin"; ?>
 
-<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
 <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
 
 	<?php 
@@ -13,7 +12,7 @@ $title = "Connection admin"; ?>
 	<section id="adminLogin">
 		<div class="formulaire">
 			<form action="index.php?action=adminSubmit" method="post">
-				<h1 class="titre-form">Connection admin</h1>
+				<h2 class="titre-form">Connection admin</h2>
 				<label for="pseudo">Pseudo</label>
 				<input type="text" name="pseudo" id="pseudo" required /></br>
 				<label for="pass">Mot de passe</label>

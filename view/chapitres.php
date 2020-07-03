@@ -3,7 +3,7 @@ $title = "Affichage chapitres"; ?>
 <?php ob_start(); 
 ?>
 
-<div class ="LeChapitre">
+<div id ="leChapitre">
 
 	<?php 
 	if (isset($_GET['deleteComm']) &&  $_GET['deleteComm'] == 'success') {
@@ -91,7 +91,7 @@ $title = "Affichage chapitres"; ?>
 
 			<div class="formulaire-comm">
 				<form id="new-comm" action="index.php?action=addComm&chap=<?= $chapitre->getId()?>" method="post">
-					<h1 class="titre-form">Laisser un commentaire</h1>
+					<h2 class="titre-form">Laisser un commentaire</h2>
 					<input type="hidden" name="membre" id="membre-id" value=<?php if (isset($_SESSION['pseudo'])){echo $_SESSION['id'];}?>>
 					<label for="content">Commentaire</label>
 					<textarea name="content" rows="5" cols="180" id="comment"></textarea>

@@ -1,6 +1,5 @@
 <?php $title = "Connexion"; ?>
 
-<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
 <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
 
 	<?php 
@@ -15,7 +14,7 @@
 	<section id="login">
 			<div class="formulaire">
 				<form action="index.php?action=loginSubmit" method="post">
-					<h1 class="titre-form">Connexion</h1>
+					<h2 class="titre-form">Connexion</h2>
 					<label for="pseudo">Pseudo</label></br>
 					<input type="text" name="pseudo" id="pseudo" required /></br>
 					<label for="pass">Mot de passe</label></br>

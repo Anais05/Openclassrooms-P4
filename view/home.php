@@ -1,9 +1,8 @@
 <?php $title = 'Billet simple pour l\'Alaska'; ?>
 
 <?php ob_start(); ?>
-<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
 
-<h2 id ="admin-chap">Chapitres</h2>
+<h2 id ="list-chap">Chapitres</h2>
 
 <?php 
   

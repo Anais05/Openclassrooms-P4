@@ -17,7 +17,7 @@ $title = "Modification chapitre"; ?>
 				</div>
 				<div class="formulaire">
 					<form id="updateform" action="index.php?action=updatePost&chap=<?= $chapitre->getId() ?>" method="post">
-							<h1 class="titre-form">Modifier chapitre</h1>
+							<h2 class="titre-form">Modifier chapitre</h2>
 							<label for="title">Titre </label><br />
 							<input type="text" name="title" id ='title' value="<?= $chapitre->getTitle() ?>"/><br />
 					

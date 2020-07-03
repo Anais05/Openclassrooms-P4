@@ -44,6 +44,14 @@ nav a:hover {
   color: #1a53ff;
 }
 
+.fa-bars {
+  font-size: 30px;
+}
+
+#bars {
+  display: none;
+}
+
 h1 {
   color: #333333;
 }
@@ -94,10 +102,7 @@ h1 span {
 #sidebar {
   margin-top: 20px;
   width: 25%;
-  height: 450px;
   padding: 50px 25px 30px 20px;
-  border: 2px dashed #ff1a1a;
-  border-radius: 8px;
 }
 
 #sidebar img {
@@ -109,9 +114,17 @@ h1 span {
   text-align: justify;
 }
 
-#sidebar span {
+#sidebar .signature {
   font-style: italic;
   color: #1a53ff;
+  font-weight: bold;
+  border-bottom: 1px dashed #ff1a1a;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+#sidebar .oeuvre {
+  font-style: italic;
   font-weight: bold;
 }
 
@@ -131,7 +144,12 @@ h1 span {
 
 /* affichage chapitres */
 
-#admin-chap {
+#leChapitre {
+  border-left: 1px dashed #ff1a1a;
+  padding-left: 20px;
+}
+
+#list-chap {
   border-bottom: 3px double #ff1a1a;
   text-align: center;
   padding: 5px;
@@ -183,12 +201,7 @@ h1 span {
 
 /* affichage commentaires */
 
-#leChapitre {
-  margin: 25px;
-}
-
 #petit-trait {
-  width: 800px;
   height: 2px;
   background-color: #ccc;
   margin: auto;
@@ -276,12 +289,97 @@ h3 {
   align-self: flex-end;
 }
 
-/* connextion */
+/* tout les formulaires */
+
+.formulaire body {
+  background: #b3ccff;
+}
+
+.formulaire {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+
+#creation .formulaire,
+#modifier .formulaire {
+  width: 90%;
+  margin: 25px;
+}
+
+.formulaire-comm {
+  width: 60%;
+  margin: auto;
+  margin-top: 15px;
+}
+
+form {
+  padding: 30px;
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.formulaire h2,
+.formulaire-comm h2 {
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #1a53ff;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+input[type="submit"]:hover {
+  background-color: white;
+  color: #1a53ff;
+  border: 1px solid #1a53ff;
+}
+
+.formulaire a {
+  color: #1a53ff;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.formulaire p {
+  text-align: center;
+}
+
+.formulaire a:hover {
+  color: #cc0000;
+}
+
+/* connextion pour commentaire */
 
 .seConnecter {
   color: red;
   font-size: 1em;
   font-weight: bold;
+  text-align: center;
 }
 
 .seConnecter a {
@@ -357,8 +455,96 @@ h3 {
   font-style: italic;
 }
 
-@media all and (max-width: 1220px) {
-  body {
-    width: auto;
+/* responsive */
+
+@media all and (max-width: 800px) {
+  h1 {
+    left: 25px;
+    position: absolute;
+    margin: 0;
+  }
+  nav {
+    display: none;
+  }
+
+  #bars {
+    display: block;
+    position: absolute;
+    right: 35px;
+    cursor: pointer;
+  }
+
+  #bars:hover {
+    color: #1a53ff;
+  }
+
+  nav ul {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    background-color: #b3ccff;
+    width: 100%;
+  }
+  nav a {
+    font-size: 1.2em;
+  }
+  nav li {
+    padding: 10px;
+  }
+
+  #container {
+    margin-top: 25px;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+  }
+
+  #sidebar {
+    display: flex;
+    margin: auto;
+    margin-top: 25px;
+    width: 90%;
+    padding-top: 30px;
+    border-top: 1px dotted #ff1a1a;
+  }
+
+  #sidebar p {
+    margin: 0;
+    font-size: 0.8em;
+  }
+
+  #sidebar img {
+    width: 40%;
+    height: 200px;
+    margin-right: 25px;
+  }
+
+  #sidebar .signature {
+    border-bottom: none;
+  }
+
+  .content {
+    width: 95%;
+    margin: auto;
+  }
+
+  #leChapitre {
+    border-left: none;
+    padding-left: 20px;
+  }
+
+  @media all and (max-width: 430px) {
+    h1 {
+      left: 15px;
+      font-size: 1.5em;
+    }
+
+    #bars {
+      right: 25px;
+    }
+
+    #sidebar {
+      width: 80%;
+    }
   }
 }

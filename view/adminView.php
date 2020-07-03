@@ -3,7 +3,7 @@
 
 <?php ob_start(); ?>
 
-<h2 id ="admin-chap">Chapitres</h2>
+<h2 id ="list-chap">Chapitres</h2>
 
 <?php 
     if (isset($_GET['newPost']) &&  $_GET['newPost'] == 'success') {

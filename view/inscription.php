@@ -1,6 +1,5 @@
 <?php $title = "Inscription"; ?>
 
- <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet2.css">
  <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
 
  <?php 
@@ -18,7 +17,7 @@
 <section id="subscribe">
 	<div  class="formulaire">
 		<form action="index.php?action=subscribeSubmit" method="post">
-			<h1 id="titre-form">Inscription</h1>
+			<h2 id="titre-form">Inscription</h2>
 			<label for="pseudo">Pseudo</label>
 			<input type="text" name="pseudo" id="pseudo" required /></br>
 			<label for="pass">Mot de passe</label>
