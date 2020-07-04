@@ -85,37 +85,40 @@ class Frontend
     {
        $UserManager = new UserManager();
 
-			$pseudo = $_POST['pseudo'];
-			$pwd1 = $_POST['pass'];
-			$pwd2 = $_POST['pass_confirm'];
-            $email = $_POST['email'];
+        $pseudo = $_POST['pseudo'];
+        $pwd1 = $_POST['pass'];
+        $pwd2 = $_POST['pass_confirm'];
+        $email = $_POST['email'];
 
-            if (!empty($pseudo) && !empty($pwd1) && !empty($pwd2) && !empty($email))
+
+        if (!empty($pseudo) && !empty($pwd1) && !empty($pwd2) && !empty($email))
+        {
+            $member = $UserManager->checkPseudo($pseudo);
+            if ($member)
             {
-                $member = $UserManager->checkPseudo($pseudo);
-                if ($member)
+                header('location: index.php?action=subscribe&pseudo=unsuccess');
+            }
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                header('location: index.php?action=subscribe&email=unsuccess');
+            }
+            else
+            {
+                if($pwd1==$pwd2)
                 {
-                    header('location: index.php?action=subscribe&pseudo=unsuccess');
-                    
+                    $pass_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+                    $insert = $UserManager -> createUser($pseudo,$pass_hache,$email);
+                    header('Location: index.php?action=login&inscription=success');
                 }
                 else
                 {
-                    if($pwd1==$pwd2)
-                    {
-                        $pass_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-                        $insert = $UserManager -> createUser($pseudo,$pass_hache,$email);
-                        header('Location: index.php?action=login&inscription=success');
-                    }
-                    else
-                    {
-                        header('location: index.php?action=subscribe&pass=unsuccess');
-                    }
+                    header('location: index.php?action=subscribe&pass=unsuccess');
                 }
             }
-            else {
-                header('location: index.php?action=subscribe&notempty=unsuccess');
-		
-			}
+        }
+        else {
+            header('location: index.php?action=subscribe&notempty=unsuccess');
+    
+        }
 
     }
 
@@ -141,9 +144,6 @@ class Frontend
          
     }
 
-
-
-    
 }
 
 ?>

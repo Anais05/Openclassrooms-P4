@@ -11,6 +11,9 @@
 	}
 	elseif (isset($_GET['notempty']) &&  $_GET['notempty'] == 'unsuccess') {
 		echo '<p id="unsuccess"> Tous les champs ne sont pas remplis ! <p>';
+	}
+	elseif (isset($_GET['email']) &&  $_GET['email'] == 'unsuccess') {
+		echo '<p id="unsuccess"> adresse email invalide ! <p>';
     }
 ?>
 
