@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -15,12 +16,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">       
         <link rel="shortcut icon" type="image/x-icon" href="">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <script src="https://cdn.tiny.cloud/1/jl6f24ufioica8cezqjtsyw38b0bbm09z9wyvnu3rnqnfatl/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <title><?= $title ?></title>
     </head>
 
     <body>
-
 
         <div id="page">
 
@@ -28,21 +27,24 @@
                 <h1 id="auteur"> Jean <span>Forteroche</span> </h1>
                     <nav id="menu">
                         <ul>
-                            <li><a href="index.php">Accueil</a></li>
-                            <li><a href="index.php?action=createpost">Ajouter un chapitre</a></li>
-                            <?php
-                                    
+                            <li><a href="index.php?action=home">Accueil</a></li>
+                                <?php
                                     if (!empty($_SESSION))  {
                                         echo '<li><a href="index.php?action=logout">Déconnexion</a></li>';
-                                    } 
+                                    } else {
+                                        echo '<li><a href="index.php?action=login">Connexion</a></li>';
+                                    }
+                                    ?>
+                                    <li><a href="index.php?action=adminLogin">Admin</a></li>
+                                    <?php
                                     if (!empty($_SESSION)) {
                                         echo "<li class = 'utilisateur'><i class='fas fa-user'></i>" . htmlspecialchars($_SESSION['pseudo']) . "</li>";
                                     }
-                                ?>                            
+                                ?>
+                                
                         </ul>
                     </nav>
                     <span id="bars"><i class="fas fa-bars"></i></span>
-
             </header>
 
             <div id="banniere">
@@ -63,21 +65,39 @@
                     </div>
                 </div>
 
-                <div class ="content">
+                <div class="content">
                     <?= $content ?>
                 </div>
+
             </section>
+
+
+            <footer>
+                <div id="footer">
+                    <div class="siteLink">
+                        <h3>Navigation</h3>
+                        <div  id="siteLink">
+                            <a href="index.php">Accueil</a><br />
+                            <a href="index.php?action=login" >Connexion</a><br />
+                            <a href="index.php?action=subscribe">Inscription</a><br />
+                        </div>
+                    </div>
+                    <div class="about">
+                        <h3>En savoir plus</h3>
+                        <div id="about">
+                            <a href="index.php?action=biographie" class="text-white">L'auteur</a><br />
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+                <script src="../public/js/messages.js"></script>
+                <script src="../public/js/burgerMenu.js"></script>
             
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
-            <script src="../public/js/texteditor.js"></script>
-            <script src="../public/js/messages.js"></script>
-            <script src="../public/js/burgerMenu.js"></script>
-
-
         </div>
-
     </body>
 </html>
 
 
-			
+

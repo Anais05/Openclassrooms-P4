@@ -12,7 +12,7 @@ class Frontend
     {
         $ChapitreManager = new ChapitreManager();
         $chapitres = $ChapitreManager->getList();
-        require('../view/home.php');
+        require('../view/frontend/home.php');
     }
 
     public function chapitre()
@@ -27,18 +27,18 @@ class Frontend
             header('Location: index.php');
         }
 
-        require('../view/chapitres.php');
+        require('../view/frontend/chapitres.php');
 
     }
 
     public function displayBio()
     {
-        require('../view/biographie.php');
+        require('../view/frontend/biographie.php');
     }
 
     public function displayLogin()
     {
-        require('../view/connexion.php');
+        require('../view/frontend/connexion.php');
     }
 
     public function loginSubmit($pseudo, $mot_de_passe)
@@ -78,7 +78,7 @@ class Frontend
 
     public function displayinscription()
     {
-        require('../view/inscription.php');
+        require('../view/frontend/inscription.php');
     }
 
     public function addUser($pseudo,$mot_de_passe,$email)

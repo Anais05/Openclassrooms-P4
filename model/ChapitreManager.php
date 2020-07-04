@@ -50,7 +50,7 @@ class ChapitreManager extends BddConnection
         $bdd = $this->dbConnect();
         if(isset($id) AND is_numeric($id))
         {
-            $req = $bdd->prepare('UPDATE chapitres SET titre = :titre, texte = :texte, date_post = now() WHERE id = :id');
+            $req = $bdd->prepare('UPDATE chapitres SET titre = :titre, texte = :texte WHERE id = :id');
             $update = $req->execute([
                 'titre' => $titre,
                 'texte' => $texte,

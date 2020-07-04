@@ -90,9 +90,7 @@ class router
                 {
                     $backend->deleteComm($_GET['id']);
                 }
-                
-        
-        
+                        
             }
             else {
                 $frontend->home();
@@ -101,7 +99,7 @@ class router
         }
         catch (Exception $e)
         {
-            echo 'Erreur';
+            echo 'Erreur : ' . $e->getMessage();
         }
     }
 }

@@ -150,7 +150,7 @@ h1 span {
 }
 
 #list-chap {
-  border-bottom: 3px double #ff1a1a;
+  border-bottom: 1px solid #ff1a1a;
   text-align: center;
   padding: 5px;
 }
@@ -532,19 +532,23 @@ input[type="submit"]:hover {
     border-left: none;
     padding-left: 20px;
   }
+}
 
-  @media all and (max-width: 430px) {
-    h1 {
-      left: 15px;
-      font-size: 1.5em;
-    }
+@media all and (max-width: 430px) {
+  h1 {
+    left: 15px;
+    font-size: 1.5em;
+  }
 
-    #bars {
-      right: 25px;
-    }
+  #bars {
+    right: 25px;
+  }
 
-    #sidebar {
-      width: 80%;
-    }
+  #sidebar {
+    width: 80%;
+  }
+
+  #new-comm h2 {
+    font-size: 1em;
   }
 }

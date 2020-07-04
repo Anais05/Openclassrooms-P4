@@ -17,9 +17,8 @@ $title = "Affichage chapitres"; ?>
     }
 		{ 
 	?>
-		
 		<h2 class ='titre-chap'><?= $chapitre->getTitle() ?></h2>
-		<p class ='date'><?= $chapitre->getDate() ?></p>
+		<p class ='date'>Publié le : <?=$chapitre->getDate() ?></p>
 		<div class ='chap'><?=htmlspecialchars_decode(nl2br($chapitre->getTexte()))?></h2>
 	<?php 
 		}
@@ -48,7 +47,7 @@ $title = "Affichage chapitres"; ?>
 				}else
 				{
 					?>
-					<p class ='comm'><?= $comment["commentaire"];?></p>
+					<p class ='comm'><?=($comment["commentaire"]);?></p>
 					<?php
 				}
 			?>

@@ -14,18 +14,18 @@ class Backend
 	    {
             $ChapitreManager = new ChapitreManager();
             $chapitres = $ChapitreManager->getList();
-            require('../view/adminView.php');
+            require('../view/backend/adminView.php');
         }
         elseif (isset($_SESSION["pseudo"]) || (empty($_SESSION))) 
         {
-            require('../view/adminlogin.php');
+            require('../view/backend/adminlogin.php');
         }
     }
     public function adminHome()
     {
         $ChapitreManager = new ChapitreManager();
         $chapitres = $ChapitreManager->getList();
-        require('../view/adminView.php');
+        require('../view/backend/adminView.php');
     }
 
     public function adminLoginSubmit($pseudo, $mot_de_passe)
@@ -47,7 +47,7 @@ class Backend
                 $_SESSION['pseudo'] = $pseudo;
                 $ChapitreManager = new ChapitreManager();
                 $chapitres = $ChapitreManager->getList();
-                require('../view/adminView.php');
+                require('../view/backend/adminView.php');
             }
             else {
                 header('Location: index.php?action=adminLogin&admin=unsuccess');
@@ -59,12 +59,12 @@ class Backend
     {
         $ChapitreManager = new ChapitreManager();
         $chapitre = $ChapitreManager->getChap($_GET['chap']);
-        require('../view/modifier.php');
+        require('../view/backend/modifier.php');
     }
 
     public function displayFormNewPost()
     {
-        require('../view/createpost.php');
+        require('../view/backend/createpost.php');
     }
 
     public function createNewPost()
