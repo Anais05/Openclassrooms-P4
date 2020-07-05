@@ -8,8 +8,8 @@
 
         <meta property="og:title" content="billet simple pour l'Alaska de Jean Forteroche" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://projet4-jeanFonteroche.anais-assamoi.fr/" />
-        <meta property="og:image" content="http://projet4-jeanFonteroche.anais-assamoi.fr/public/img/alaska-banniere.png" />
+        <meta property="og:url" content="http://projet4-jeanForteroche.anais-assamoi.fr/" />
+        <meta property="og:image" content="http://projet4-jeanForteroche.anais-assamoi.fr/public/img/alaska-banniere.png" />
 
         <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">       
