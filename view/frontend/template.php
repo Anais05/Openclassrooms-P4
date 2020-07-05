@@ -4,17 +4,17 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
-        <meta name="description" content="">
-        <meta name="keywords" content="">
+        <meta name="description" content="Blog de Jean Forteroche pour 'billet simple pour l'Alaska'" />
+        <meta name="keywords" content="billet simple pour l'Alaska">
 
-        <meta property="og:title" content="" />
+        <meta property="og:title" content="billet simple pour l'Alaska de Jean Forteroche" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="" />
-        <meta property="og:image" content="" />
+        <meta property="og:url" content="http://projet4-jeanFonteroche.anais-assamoi.fr/" />
+        <meta property="og:image" content="http://projet4-jeanFonteroche.anais-assamoi.fr/public/img/alaska-banniere.png" />
 
         <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">       
-        <link rel="shortcut icon" type="image/x-icon" href="">
+        <link rel="shortcut icon" type="image/x-icon" href="public/img/favicon.ico">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <title><?= $title ?></title>
     </head>
