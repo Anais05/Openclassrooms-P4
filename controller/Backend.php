@@ -37,7 +37,7 @@ class Backend
 
         if (!$admin)
         {
-            header('Location: index.php?action=adminLogin&admin=unsuccess');
+            header('Location:index.php?action=adminLogin&admin=unsuccess');
         }
         else
         {
@@ -50,7 +50,7 @@ class Backend
                 require('../view/backend/adminView.php');
             }
             else {
-                header('Location: index.php?action=adminLogin&admin=unsuccess');
+                header('Location:index.php?action=adminLogin&admin=unsuccess');
             }
         }
     }

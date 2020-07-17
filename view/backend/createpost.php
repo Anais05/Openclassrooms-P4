@@ -2,7 +2,6 @@
 $title = "Nouveau chapitre"; 
 ?>
 <?php ob_start(); ?>
-<link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
 
 <?php
 	if (isset($_GET['newPost']) &&  $_GET['newPost'] == 'unsuccess') {

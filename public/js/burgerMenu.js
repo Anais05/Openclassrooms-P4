@@ -1,7 +1,6 @@
 var BurgerMenu = {
   burger: document.getElementById("bars"),
   menu: document.getElementById("menu"),
-  body: document.getElementById("banniere"),
   estFerme: true,
 
   initBurger: function () {
@@ -20,4 +19,6 @@ var BurgerMenu = {
     });
   },
 };
-BurgerMenu.initBurger();
+if (window.matchMedia("(max-width: 800px)").matches) {
+  BurgerMenu.initBurger();
+}

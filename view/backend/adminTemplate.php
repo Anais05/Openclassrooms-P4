@@ -8,12 +8,12 @@
 
         <meta property="og:title" content="billet simple pour l'Alaska de Jean Forteroche" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://projet4-jeanForteroche.anais-assamoi.fr/" />
-        <meta property="og:image" content="http://projet4-jeanForteroche.anais-assamoi.fr/public/img/alaska-banniere.png" />
+        <meta property="og:url" content="http://projet4-jeanforteroche.anais-assamoi.fr/" />
+        <meta property="og:image" content="http://projet4-jeanforteroche.anais-assamoi.fr/public/img/alaska-banniere.png" />
 
         <link rel="stylesheet" type="text/css" href="../public/CSS/stylesheet.css">
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">       
-        <link rel="shortcut icon" type="image/x-icon" href="public/img/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="../public/img/favicon.ico">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <script src="https://cdn.tiny.cloud/1/jl6f24ufioica8cezqjtsyw38b0bbm09z9wyvnu3rnqnfatl/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <title><?= $title ?></title>
@@ -68,7 +68,6 @@
                 </div>
             </section>
             
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
             <script src="../public/js/texteditor.js"></script>
             <script src="../public/js/messages.js"></script>
             <script src="../public/js/burgerMenu.js"></script>

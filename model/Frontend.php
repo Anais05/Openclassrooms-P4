@@ -51,18 +51,18 @@ class Frontend
 			if (!$user)
 			{
                 header('Location: index.php?action=login&user=unsuccess');
-            }
-            else
-            {
-                if ($isPasswordCorrect)
-                {
+			}
+			else
+			{
+			    if ($isPasswordCorrect) 
+			    {
 			        session_start();
-                    $_SESSION['id'] = $user['id'];
-                    $_SESSION['pseudo'] = $pseudo;
-                    header('Location: index.php?action=home');
-                } 
-                else 
-                {
+			        $_SESSION['id'] = $user['id'];
+			        $_SESSION['pseudo'] = $pseudo;
+                    header('Location: http://projet4-jeanforteroche.anais-assamoi.fr/index.php?action=home');
+                    exit();
+			    }
+			    else {
                     header('Location: index.php?action=login&user=unsuccess');
 			    }
 			}
