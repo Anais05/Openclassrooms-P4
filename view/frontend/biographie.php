@@ -12,7 +12,7 @@ $title = "Biograhie de l'auteur"; ?>
                     Passionné d'écriture et de voyage en 1997 il decide d'abandonner sont metier d'ingenieur et part à l'aventure.
                     Quelques années plus tard après avoir fait le tour du monde Jean écrit et publie son premier roman <span>"le départ"</span> qui le propulse directement en temps que nouveau talent.
                     Par la site il devient l'auteur de roman à succès comme <span>"La forêt enragée"</span> ou encore <span>"La femme au sac à dos"</span> qui séduisent les lecteur grâce au voyage et au magnifique paysages décrit. 
-                    Vous pouvez suivre la progression en direct sur ce blog de son dernier roman <span>"Billet simple pour l'Alaska"</span><br>
+                    Vous pouvez suivre la progression en direct sur ce blog de son dernier roman <span>"Billet simple pour l'Alaska"</span></br>
                     Bonne lecture ! 
                 </p>
 			</section>

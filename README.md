@@ -35,7 +35,7 @@ Chapitre "Fonctions d'aggrégation" du cours MySQL
 - Code HTML, CSS, PHP et JavaScript
 - Export de la base de données MySQL
 - Lien vers la page GitHub contenant l'historique des commits
-(votre historique de commits doit montrer une progression régulière par petites étapes)
+  (votre historique de commits doit montrer une progression régulière par petites étapes)
 
 ## Soutenance
 
@@ -50,4 +50,8 @@ Pour cette soutenance, vous vous positionnerez comme un développeur présentant
 - Récupérer les données d’une base
 - Créer un site Internet, de sa conception à sa livraison
 - Insérer ou modifier les données d’une base
-Organiser le code en langage PHP
+  Organiser le code en langage PHP
+
+## Lien vers le site
+
+http://projet4-jeanforteroche.anais-assamoi.fr/

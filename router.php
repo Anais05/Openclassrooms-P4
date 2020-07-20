@@ -2,7 +2,6 @@
 require('controller/Frontend.php');
 require('controller/Backend.php');
 
-
 class router 
 {
     public function run()
@@ -14,81 +13,87 @@ class router
             
             if (isset($_GET['action'])) 
             {
-                if ($_GET['action'] == 'home')
-                {
-                    $frontend->home();
-                }
-                elseif ($_GET['action'] == 'chapitre')
-                {
-                    $frontend->chapitre();
-                }
-                elseif($_GET['action'] == 'login')
-                {
-                    $frontend->displayLogin();
-                }
-                elseif($_GET['action'] == 'loginSubmit')
-                {
-                    $frontend->loginSubmit(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']));
-                }
-                elseif ($_GET['action'] == 'logout') 
-                {
-                    $frontend->Logout();
-                }
-                elseif ($_GET['action'] == 'subscribe') 
-                {
-                    $frontend->displayinscription();
-                }
-                elseif ($_GET['action'] == 'subscribeSubmit')
-                {
-                    $frontend->addUser(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']), strip_tags($_POST['email']));
-                }
-                elseif ($_GET['action'] == 'addComm')
-                {
-                    $frontend->addComm();
-                }
-                elseif ($_GET['action'] == 'report')
-                {
-                    $frontend->reportComm($_GET['id']);
-                }
-                elseif($_GET['action'] == 'biographie')
-                {
-                    $frontend->displayBio();
-                }
-                elseif ($_GET['action'] == 'adminLogin') 
-                {
-                    $backend->displayAdminLogin();
-                }
-                elseif ($_GET['action'] == 'adminSubmit') 
-                {
-                    $backend->adminLoginSubmit(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']));
-                }
-                elseif($_GET['action'] == 'adminHome')
-                {
-                    $backend->adminHome();
-                }
-                elseif($_GET['action'] == 'modifier')
-                {
-                    $backend->displayEditPannel();
-                }
-                elseif($_GET['action'] == 'createpost')
-                {
-                    $backend->displayFormNewPost();
-                }
-                elseif($_GET['action'] == 'newchap')
-                {
-                    $backend->createNewPost();
-                }
-                elseif($_GET['action'] == 'updatePost')
-                {
-                    $backend->updateCurrentPost($_POST['title'], $_POST['content'], $_GET['chap']);
-                }
-                elseif($_GET['action'] == 'deleteChap')
-                {
-                    $backend->deleteCurrentPost($_GET['chap']);
-                }
-                elseif($_GET['action'] == 'deletecomm')
-                {
-                    $backend->deleteComm($_GET['id']);
+                switch ($_GET['action']) {
+                    case 'home':
+                        $frontend->home();
+                        break;
+
+                    case 'chapitre':
+                        $frontend->chapitre();
+                        break;
+
+                    case 'login':
+                        $frontend->displayLogin();
+                        break;
+
+                    case 'loginSubmit':
+                        $frontend->loginSubmit(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']));
+                        break;
+
+                    case 'logout':
+                        $frontend->Logout();
+                        break;
+                        
+                    case 'subscribe':
+                        $frontend->displayinscription();
+                        break;
+
+                    case 'subscribeSubmit':
+                        $frontend->addUser(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']), strip_tags($_POST['email']));
+                        break;
+                    
+                    case 'addComm':
+                        $frontend->addComm();
+                        break;
+
+                    case 'report':
+                        $frontend->reportComm($_GET['id']);
+                        break;
+
+                    case 'biographie':
+                        $frontend->displayBio();
+                        break;
+
+                    case 'adminLogin':
+                        $backend->displayAdminLogin();
+                        break;
+
+                    case 'adminSubmit':
+                        $backend->adminLoginSubmit(strip_tags($_POST['pseudo']), strip_tags($_POST['pass']));
+                        break;
+
+                    case 'adminHome':
+                        $backend->adminHome();
+                        break;
+
+                    case 'modifier':
+                        $backend->displayEditPannel();
+                        break;
+
+                    case 'createpost':
+                        $backend->displayFormNewPost();
+                        break;
+
+                    case 'newchap':
+                        $backend->createNewPost();
+                        break;
+
+                    case 'updatePost':
+                        $backend->updateCurrentPost($_POST['title'], $_POST['content'], $_GET['chap']);
+                        break;
+
+                    case 'deleteChap':
+                        $backend->deleteCurrentPost($_GET['chap']);
+                        break;
+
+                    case 'deletecomm':
+                        $backend->deleteComm($_GET['id']);
+                        break;
+
+                    default:
+                        throw new \Exception("Action pas valide");
+                        break;
+
                 }
                         
             }

@@ -58,7 +58,7 @@
                 <div id="sidebar">
                     <img src="../public/img/intro.jpg" alt="montagne">
                     <div>
-                        <p> Bienvenue sur mon blog ! <br>Pour mon 5e ouvrage, j'ai décidé d'innover et de rendre ce livre interactif.
+                        <p> Bienvenue sur mon blog ! </br>Pour mon 5e ouvrage, j'ai décidé d'innover et de rendre ce livre interactif.
                         j'ai eu l'idée de partager mon nouveau roman <span class="oeuvre">"Billet Simple pour l'Alaska" </span>de manière innovante et entièrement gratuite. 
                         Un nouveau chapitre sera posté au fur et à mesure sur le blog. N’hésitez pas à laisser des commentaires. Bonne lecture à tous !</p> 
                         <p class="signature" >Jean Forteroche</p>
@@ -77,15 +77,15 @@
                     <div class="siteLink">
                         <h3>Navigation</h3>
                         <div  id="siteLink">
-                            <a href="index.php">Accueil</a><br />
-                            <a href="index.php?action=login" >Connexion</a><br />
-                            <a href="index.php?action=subscribe">Inscription</a><br />
+                            <a href="index.php?action=home">Accueil</a></br>
+                            <a href="index.php?action=login" >Connexion</a></br>
+                            <a href="index.php?action=subscribe">Inscription</a></br>
                         </div>
                     </div>
                     <div class="about">
                         <h3>En savoir plus</h3>
                         <div id="about">
-                            <a href="index.php?action=biographie" class="text-white">L'auteur</a><br />
+                            <a href="index.php?action=biographie" class="text-white">L'auteur</a></br>
                         </div>
                     </div>
                 </div>

@@ -55,7 +55,6 @@ class CommentManager extends BddConnection
 
      public function report($id)
     {
-        var_dump($id);
         $bdd = $this->dbConnect();
         $query = $bdd->prepare("UPDATE commentaires SET statut = 1 WHERE id_comm = ?");
         $query->execute(array($id));
