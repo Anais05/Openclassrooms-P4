@@ -12,6 +12,9 @@ $title = "Affichage chapitres"; ?>
 	elseif (isset($_GET['addComm']) &&  $_GET['addComm'] == 'success') {
 		echo '<p id="success">Le commentaire a bient été ajouté !<p>';
 	}
+	elseif (isset($_GET['addComm']) &&  $_GET['addComm'] == 'unsuccess') {
+		echo '<p id="unsuccess"> Commentaire vide !<p>';
+	}
 	elseif (isset($_GET['report']) &&  $_GET['report'] == 'success') {
 		echo '<p id="success">Le commentaire a bient été signalé!<p>';
     }
@@ -79,11 +82,10 @@ $title = "Affichage chapitres"; ?>
 					}
 				}
 
-		?>
-		
-			
+		?>			
 		
 	</div>
+
 		<?php	
 			if (!empty($_SESSION)) {
 		?>
@@ -102,9 +104,8 @@ $title = "Affichage chapitres"; ?>
 			else{
 				echo "<p class ='seConnecter'>Pour lasser un commentaire  veuillez vous connecter <a href='index.php?action=login'>ici !</a><p>";
 			}
+			
 		?>
-
-
 
 </div>
 

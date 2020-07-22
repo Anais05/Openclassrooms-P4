@@ -126,13 +126,20 @@ class Frontend
     public function addComm()
     {
         $CommentManager = new commentManager();
-        if(isset($_POST['membre']) && isset($_POST['content'])){
+        if (empty($_POST['content']) || !isset($_POST['content']))
+        {
+            $id = $_GET['chap'];
+            header('location: index.php?action=chapitre&chap='.$id.'&addComm=unsuccess');
+        }
+        elseif(!empty($_POST['content']) && isset($_POST['membre']) && isset($_POST['content']) )
+        {
             $id_membre = $_POST['membre'];
             $commentaire = $_POST['content'];
             $id = $_GET['chap'];
             $comment = $CommentManager->addComm($id_membre, $id,$commentaire);
             header('location: index.php?action=chapitre&chap='.$id.'&addComm=success');
         }
+            
     }
 
     public function reportComm($id)
